@@ -13,21 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dishes', function (Blueprint $table) {
-
+        Schema::create('orders', function (Blueprint $table) {
             // ID PRIMARY KEY
             $table->id();
+
             // RESTAURANT_ID FOREIGN KEY
             $table->unsignedBigInteger('restaurant_id')->nullable();
-            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('cascade');
+            $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('set null');
 
-            $table->string('name', 30);
-            $table->text('photo')->nullable();
-            $table->text('description', 300)->nullable();
-            $table->text('ingredients', 250)->nullable();
-            // $table->SmallInteger Oppure float('price'); // scegliere variabile
+            $table->string('name');
+            $table->string('surname');
+            $table->string('email');
+            $table->string('address');
+            $table->string('status');
+            $table->text('notes')->nullable();
+            $table->decimal('total', 8, 2);
 
-            $table->timestamps();
+            $table->timestamps();            
         });
     }
 
@@ -38,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dishes');
+        Schema::dropIfExists('orders');
     }
 };
