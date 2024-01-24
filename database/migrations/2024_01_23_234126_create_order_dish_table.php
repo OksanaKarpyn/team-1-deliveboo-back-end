@@ -16,13 +16,22 @@ return new class extends Migration
         Schema::create('order_dish', function (Blueprint $table) {
             // ORDER_ID FOREIGN KEY
             $table->unsignedBigInteger('order_id');
-            $table->foreign('order_id')->references('id')->on('orders');
+            $table->foreign('order_id')
+            ->references('id')
+            ->on('orders')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
 
             // PRODUCT_ID FOREIGN KEY
             $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('product_id')
+            ->references('id')
+            ->on('products')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
 
             $table->tinyInteger('quantity');
+            $table->timestamps();
 
             // $table->decimal('sub_total', 7, 2);  ??
         });

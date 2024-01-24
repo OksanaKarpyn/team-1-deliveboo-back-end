@@ -8,4 +8,32 @@ use Illuminate\Database\Eloquent\Model;
 class Dish extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'photo',
+        'description',
+        'ingredients',
+        'price'
+    ];
+
+    protected $appends = [
+
+        'full_photo_img'
+
+    ];
+
+    public function getFullPhotoImgAttribute() {
+        if($this->photo) {
+            return asset('storage/'. $this->photo);
+        } return null;
+    }
+
+    public function Restaurant() {
+        return $this->belongsTo(Restaurant::class);
+    }
+
+    public function Order() {
+        return $this->belongsToMany(Order::class);
+    }
 }

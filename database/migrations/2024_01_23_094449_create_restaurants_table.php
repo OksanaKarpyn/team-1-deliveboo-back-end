@@ -17,11 +17,14 @@ return new class extends Migration
 
             // ID PRIMARY KEY
             $table->id();
+            $table->timestamps();
             // RESTAURANT_ID FOREIGN KEY
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
-            $table->timestamps();
+            $table->foreign('user_id')
+            ->references('id')
+            ->on('users')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->string('name', 25);
             $table->string('address', 50);
             $table->string('phone', 15);

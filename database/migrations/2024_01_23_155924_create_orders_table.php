@@ -16,20 +16,19 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             // ID PRIMARY KEY
             $table->id();
+            $table->timestamps();            
 
             // RESTAURANT_ID FOREIGN KEY
             $table->unsignedBigInteger('restaurant_id')->nullable();
             $table->foreign('restaurant_id')->references('id')->on('restaurants')->onDelete('set null');
-
             $table->string('name');
             $table->string('surname');
             $table->string('email');
             $table->string('address');
             $table->string('status');
             $table->text('notes')->nullable();
-            $table->decimal('total', 8, 2);
+            $table->decimal('tot_price', 8, 2);
 
-            $table->timestamps();            
         });
     }
 
