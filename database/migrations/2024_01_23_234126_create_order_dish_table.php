@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -17,18 +16,18 @@ return new class extends Migration
             // ORDER_ID FOREIGN KEY
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')
-            ->references('id')
-            ->on('orders')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+                ->references('id')
+                ->on('orders')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             // PRODUCT_ID FOREIGN KEY
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')
-            ->references('id')
-            ->on('products')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
+            $table->unsignedBigInteger('dish_id');
+            $table->foreign('dish_id')
+                ->references('id')
+                ->on('dishes')
+                ->onUpdate('cascade')
+                ->onDelete('cascade');
 
             $table->tinyInteger('quantity');
             $table->timestamps();
