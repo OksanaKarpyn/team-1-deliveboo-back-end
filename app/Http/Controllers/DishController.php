@@ -17,7 +17,6 @@ class DishController extends Controller
     public function index() {
         
             $dish = Dish::all();
-            
             return view('user.dish.index', compact('dishes'));
         
     }
