@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Restaurant;
 use App\Models\Dish;
+use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Restaurant\StoreRestaurantRequest;
 use App\Http\Requests\Restaurant\UpdateRestaurantRequest;
@@ -42,46 +43,27 @@ class RestaurantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreRestaurantRequest $request)
     {
-        /*
 
-
-        if (isset($formData['photo'])) {
-            $photo_path = Storage::put('uploads/images', $formData['photo']);
-        }
-
-        if (isset($formData['cv'])) {
-            $cv_path = Storage::put('uploads/pdf', $formData['cv']);
-        }
-
-        $teacher = Teacher::create(
-        [
-            'user_id'=>$formData['user_id'],
-            'bio'=>  $formData['bio'],
-            'cv' =>  $cv_path,
-            'photo' =>  $photo_path,
-            'phone' =>  $formData['phone'],
-            'service' =>  $formData['service'],
-        ]);
-
-        if (isset($formData['subjects'])) {
-            foreach ($formData['subjects'] as $subjectId) {
-
-                $teacher->subjects()->attach($subjectId);
-            }
-        }
-
-        $user = User::find(auth()->user()->id);
-        $user->teacher_id = $teacher->id;
-        $user->save();
-        */
         $formData = $request->validated();
         $photo_path = null;
 
         if (isset($formData['photo'])) {
             $photo_path = Storage::put('uploads/images', $formData['photo']);
         }
+
+        $restaurant = Restaurant::create(
+            [
+                //da aggiungere voci del form
+                'photo' => $photo_path,
+
+            ]
+        );
+
+        $user = User::find(auth()->user()->id);
+        $user->teacher_id = $restaurant->id;
+        $user->save();
         //
         return redirect()->route('user.dashboard');
     }
@@ -92,9 +74,10 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Restaurant $restaurant)
     {
         //
+        return view('user.restaurant.show', compact('restaurant'));
     }
 
     /**
@@ -103,9 +86,11 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Restaurant $restaurant)
     {
+
         //
+        return view('user.restaurant.edit', compact('restaurant'));
     }
 
     /**
@@ -115,9 +100,10 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
         //
+        return redirect()->route(); //da determinare redirect
     }
 
     /**
@@ -126,8 +112,11 @@ class RestaurantController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Restaurant $restaurant)
     {
+        Restaurant::destroy($restaurant->id);
+        User::destroy(auth()->user()->id);
         //
+        return redirect()->route('user.restaurants.index');
     }
 }
