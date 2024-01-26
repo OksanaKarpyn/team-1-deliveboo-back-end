@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Dish\StoreDishRequest;
+use App\Http\Requests\Dish\UpdateDishRequest;
+use App\Models\Dish;
 use Illuminate\Http\Request;
 
 class DishController extends Controller
@@ -11,9 +14,12 @@ class DishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index() {
+        
+            $dish = Dish::all();
+            
+            return view('user.dish.index', compact('dishes'));
+        
     }
 
     /**
@@ -21,9 +27,11 @@ class DishController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
+    public function create() {
+
+        $dishes = Dish::all();
+        
+        return view('user.dish.create', compact('dishes'));
     }
 
     /**
@@ -32,9 +40,24 @@ class DishController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(StoreDishRequest $request) {
+
+        $formData = $request->validated();
+        $photo_path = null;
+
+        if (isset($formData['photo'])) {
+            $photo_path = Storage::put('uploads/images', $formData['photo']);
+        }
+        
+        $dish = Dish::create([
+                
+                'photo' => $photo_path,
+
+            ]
+        );
+
+        return redirect()->route('dish.index');
+
     }
 
     /**
@@ -43,9 +66,9 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
+    public function show(Dish $dish) {
+        return view('restaurant.dish.show', compact('dish'));
+
     }
 
     /**
@@ -54,9 +77,10 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit(Dish $dish) {
+
+        return view('restaurant.dish.show', compavt('dish'));
+        
     }
 
     /**
@@ -66,9 +90,8 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(UpdateDishRequest $request, Dish $dish) {
+        return redirect()->route(); 
     }
 
     /**
@@ -77,8 +100,11 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
-    {
-        //
+    public function destroy(Dish $dish) {
+
+        Dish::destroy($dish->id);
+
+        return redirect()->route('user.dishes.index');
+        
     }
 }

@@ -62,7 +62,7 @@ class RestaurantController extends Controller
         );
 
         $user = User::find(auth()->user()->id);
-        $user->teacher_id = $restaurant->id;
+        $user->restaurant_id = $restaurant->id;
         $user->save();
         //
         return redirect()->route('user.dashboard');
@@ -76,7 +76,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        //
+        
         return view('user.restaurant.show', compact('restaurant'));
     }
 
@@ -102,7 +102,7 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        //
+        
         return redirect()->route(); //da determinare redirect
     }
 
