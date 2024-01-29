@@ -5,14 +5,11 @@ namespace Database\Seeders;
 use App\Models\Dish;
 use App\Models\Order;
 use App\Models\Restaurant;
-use Dflydev\DotAccessData\Data;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Facades\Schema;
-
-use function PHPSTORM_META\map;
 
 class OrderSeeder extends Seeder
 {
