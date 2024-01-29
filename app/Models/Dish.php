@@ -34,6 +34,6 @@ class Dish extends Model
     }
 
     public function Order() {
-        return $this->belongsToMany(Order::class);
+        return $this->belongsToMany(Order::class, 'order_dish');
     }
 }
