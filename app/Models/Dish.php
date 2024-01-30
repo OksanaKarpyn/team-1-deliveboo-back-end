@@ -10,6 +10,7 @@ class Dish extends Model
     use HasFactory;
 
     protected $fillable = [
+        'restaurant_id',
         'name',
         'photo',
         'description',

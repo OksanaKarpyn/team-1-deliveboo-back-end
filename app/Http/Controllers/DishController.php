@@ -6,6 +6,8 @@ use App\Http\Requests\Dish\StoreDishRequest;
 use App\Http\Requests\Dish\UpdateDishRequest;
 use App\Models\Dish;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -16,8 +18,8 @@ class DishController extends Controller
      */
     public function index() {
         
-            $dish = Dish::all();
-            return view('user.dish.index', compact('dishes'));
+        $dishes = Dish::all();
+        return view('user.dish.index', compact('dishes'));
         
     }
 
@@ -40,22 +42,28 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreDishRequest $request) {
-
-        $formData = $request->validated();
-        $photo_path = null;
-
-        if (isset($formData['photo'])) {
-            $photo_path = Storage::put('uploads/images', $formData['photo']);
+        dd($request);
+        $validated_data = $request->validated();
+        if($request->hasFile('photo')){
+            $path_img = Storage::disk('public')->put('folderPhoto', $request->photo);
+            $validated_data['photo'] = $path_img;
+            // dd($path_img);
+            
         }
-        
-        $dish = Dish::create([
-                
-                'photo' => $photo_path,
 
-            ]
-        );
+        if (Auth::user()->restaurant) {
+            $new_dish = new Dish();
+            $validated_data['restaurant_id'] = Auth::user()->restaurant->id;
+            $new_dish->fill($validated_data);
+            dd($new_dish);
+            $new_dish->save();
+        } else {
+         
+            dd("L'utente non ha un ristorante associato.");
+            return redirect()->back()->with('error', 'Devi creare un ristorante prima di aggiungere piatti.');
+        }
 
-        return redirect()->route('dish.index');
+        return redirect()->route('user.dish.index');
 
     }
 
