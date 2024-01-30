@@ -8,9 +8,10 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Restaurant\StoreRestaurantRequest;
 use App\Http\Requests\Restaurant\UpdateRestaurantRequest;
-
+use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -21,7 +22,7 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurant = Restaurant::where('user_id', Auth::user()->id)->first();
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->with('types')->first();
         //
         return view('user.restaurant.index', compact('restaurant'));
     }
@@ -95,8 +96,10 @@ class RestaurantController extends Controller
         if($restaurant->user_id != Auth::user()->id){
             return to_route('user.restaurant.index');
         }
+        $editRestaurant = Restaurant::where('user_id', Auth::user()->id)->with('types')->first();
+        $typologies = Type::all();
         
-        return view('user.restaurant.edit', compact('restaurant'));
+        return view('user.restaurant.edit', compact('editRestaurant', 'typologies'));
     }
 
     /**
@@ -108,8 +111,28 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
+        $data = $request->validated();
+
+        $updateRestaurant = Restaurant::where('id', $restaurant->id)->first();
+
+        $updateRestaurant->name  = $data['name'];
+        $updateRestaurant->address = $data['address'];
+        $updateRestaurant->description = $data['description'];
+        $updateRestaurant->phone = $data['phone'];
         
-        return redirect()->route(); //da determinare redirect
+        if(isset($data['photo'])){
+            if($updateRestaurant->photo){
+                Storage::delete($updateRestaurant->photo);
+            }
+            $updateRestaurant->photo = Storage::put('uploads', $data['photo']);
+        }
+        $updateRestaurant->save();
+
+        if($data['types']){
+            $updateRestaurant->types()->sync($data['types']);
+        }
+
+        return redirect()->route('user.restaurant.index')->with('message', 'Ristorante aggiornato con successo'); //da determinare redirect
     }
 
     /**

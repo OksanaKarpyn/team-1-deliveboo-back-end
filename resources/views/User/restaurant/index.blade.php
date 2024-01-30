@@ -5,6 +5,8 @@
         <div class="card p-3 fs-4 fw-bold col-8">{{ $restaurant->name }}</div>
         <a href="{{ route('user.restaurant.edit', $restaurant )}}" class="btn btn-primary col-3 p-3">Modifica</a>
     </div>
-        
+        @foreach ($restaurant->types as $type)
+            <div>{{ $type->name }}</div>
+        @endforeach
     </section>
 @endsection
