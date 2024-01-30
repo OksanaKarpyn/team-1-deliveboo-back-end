@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        return redirect()->action([Restaurant::class, 'index']);
+        return to_route('user.restaurant.index');
     }
 
     /**

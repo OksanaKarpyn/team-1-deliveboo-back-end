@@ -1,4 +1,6 @@
 @extends('layouts.app')
 @section('content')
- {{ $restaurant->name }}
+    <section class="container">
+        {{ $restaurant->name }}
+    </section>
 @endsection
