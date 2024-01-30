@@ -11,26 +11,18 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up() 
-    {
+    public function up() {
         Schema::create('restaurants', function (Blueprint $table) {
-
             // ID PRIMARY KEY
             $table->id();
             $table->timestamps();
-            // RESTAURANT_ID FOREIGN KEY
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->string('name', 25);
-            $table->string('address', 50);
-            $table->string('phone', 15);
-            $table->text('description', 300)->nullable();
+            // USER_ID FOREIGN KEY
+            $table->foreignId('user_id')->references('id')->on('users')->constrained()->onDelete('cascade');
+            $table->string('name');
+            $table->string('address');
+            $table->string('phone');
+            $table->text('description')->nullable();
             $table->text('photo')->nullable();
-
         });
     }
 

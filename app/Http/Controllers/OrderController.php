@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Http\Requests\Order\StoreOrderRequest;
+use App\Http\Requests\Order\UpdateOrderRequest;
 
 class OrderController extends Controller
 {
@@ -14,7 +16,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $order= Order::all();
+        return view('user.order.index', compact('orders'));
     }
 
     /**
@@ -33,9 +36,9 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreOrderRequest $request)
     {
-        //
+        //$formDataValidate = $request->validated();
     }
 
     /**
@@ -45,8 +48,11 @@ class OrderController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Order $order)
-    {
-        //
+    {   
+        // if (!auth()->user()->restaurant_id) {
+        // return redirect()->route('user.restaurant.create');
+        // }
+        return view('user.order.show',compact('order'));
     }
 
     /**
@@ -67,9 +73,10 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Order $order)
+    public function update( UpdateOrderRequest $request, Order $order)
     {
-        //
+        //$formDataValidate = $request->validated();
+        return redirect();
     }
 
     /**
@@ -80,6 +87,7 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        Order::destroy($order->id);
+        return redirect()->route('user.order.index');
     }
 }
