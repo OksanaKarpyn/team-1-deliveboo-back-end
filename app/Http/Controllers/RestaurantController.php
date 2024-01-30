@@ -47,6 +47,7 @@ class RestaurantController extends Controller
     {
 
         $formData = $request->validated();
+        dd($formData);
         $photo_path = null;
 
         // if (isset($formData['photo'])) {
@@ -54,11 +55,11 @@ class RestaurantController extends Controller
         // }
 
         $restaurant = Restaurant::create([
-            'restaurant_name' => $request->name,
-            'restaurant_address' => $request->address,
-            'restaurant_phone' => $request->phone,
-            'restaurant_description' => $request->description,
-            'restaurant_photo' => $request->photo
+            'name' => $formData['restaurant_name'],
+            'address' => $formData['restaurant_address'],
+            'phone' => $formData['restaurant_phone'],
+            'description' => $formData['restaurant_description'],
+            'photo' => $formData['restaurant_photo'],
         ]);
 
         $user = User::find(auth()->user()->id);
@@ -103,7 +104,7 @@ class RestaurantController extends Controller
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
 
-        return redirect()->route(); //da determinare redirect
+        // return redirect()->route(); //da determinare redirect
     }
 
     /**
@@ -117,6 +118,6 @@ class RestaurantController extends Controller
         Restaurant::destroy($restaurant->id);
         User::destroy(auth()->user()->id);
         //
-        return redirect()->route('user.restaurants.index');
+        return redirect()->route('user.restaurant.index');
     }
 }

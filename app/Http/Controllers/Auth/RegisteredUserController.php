@@ -39,7 +39,7 @@ class RegisteredUserController extends Controller
             'restaurant_name' => ['required', 'string', 'max:20'],
             'restaurant_address' => ['required', 'string', 'max:30'],
             'restaurant_phone' => ['required', 'string', 'max:20'],
-            'restaurant_description' => ['nullable', 'text', 'max:300'],
+            'restaurant_description' => ['nullable', 'string', 'max:300'],
             'restaurant_photo' => ['nullable', 'image'],
         ]);
 
@@ -56,6 +56,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('user.restaurants.store');
+        return redirect()->route('user.restaurant.store');
     }
 }
