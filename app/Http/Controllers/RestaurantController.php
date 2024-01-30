@@ -89,8 +89,13 @@ class RestaurantController extends Controller
      */
     public function edit(Restaurant $restaurant)
     {
-
-        //
+        /* 
+        Proteziona della rotta controllando se il ristorante che viene passato é quello dell'utente autenticato
+        */
+        if($restaurant->user_id != Auth::user()->id){
+            return to_route('user.restaurant.index');
+        }
+        
         return view('user.restaurant.edit', compact('restaurant'));
     }
 
