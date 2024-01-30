@@ -49,17 +49,17 @@ class RestaurantController extends Controller
         $formData = $request->validated();
         $photo_path = null;
 
-        if (isset($formData['photo'])) {
-            $photo_path = Storage::put('uploads/images', $formData['photo']);
-        }
+        // if (isset($formData['photo'])) {
+        //     $photo_path = Storage::put('uploads/images', $formData['photo']);
+        // }
 
-        $restaurant = Restaurant::create(
-            [
-                //da aggiungere voci del form
-                'photo' => $photo_path,
-
-            ]
-        );
+        $restaurant = Restaurant::create([
+            'restaurant_name' => $request->name,
+            'restaurant_address' => $request->address,
+            'restaurant_phone' => $request->phone,
+            'restaurant_description' => $request->description,
+            'restaurant_photo' => $request->photo
+        ]);
 
         $user = User::find(auth()->user()->id);
         $user->restaurant_id = $restaurant->id;
@@ -76,7 +76,7 @@ class RestaurantController extends Controller
      */
     public function show(Restaurant $restaurant)
     {
-        
+
         return view('user.restaurant.show', compact('restaurant'));
     }
 
@@ -102,7 +102,7 @@ class RestaurantController extends Controller
      */
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
-        
+
         return redirect()->route(); //da determinare redirect
     }
 

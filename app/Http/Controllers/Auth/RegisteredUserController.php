@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Restaurant;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -31,15 +32,15 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
-            'name' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
+            'name' => ['required', 'string', 'max:20'],
+            'lastname' => ['required', 'string', 'max:20'],
+            'email' => ['required', 'string', 'email', 'max:30', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
-            'restaurantName' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
-            'phone' => ['required', 'string', 'max:20'],
-            'description' => ['required', 'text', 'max:350'],
-            'photo' => ['nullable', 'file'],
+            'restaurant_name' => ['required', 'string', 'max:20'],
+            'restaurant_address' => ['required', 'string', 'max:30'],
+            'restaurant_phone' => ['required', 'string', 'max:20'],
+            'restaurant_description' => ['nullable', 'text', 'max:300'],
+            'restaurant_photo' => ['nullable', 'image'],
         ]);
 
         $user = User::create([
@@ -49,10 +50,12 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
+        
         event(new Registered($user));
+
 
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return redirect()->route('user.restaurants.store');
     }
 }
