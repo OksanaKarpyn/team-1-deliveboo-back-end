@@ -42,7 +42,7 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreDishRequest $request) {
-        dd($request);
+        //dd($request);
         $validated_data = $request->validated();
         if($request->hasFile('photo')){
             $path_img = Storage::disk('public')->put('folderPhoto', $request->photo);
@@ -55,7 +55,7 @@ class DishController extends Controller
             $new_dish = new Dish();
             $validated_data['restaurant_id'] = Auth::user()->restaurant->id;
             $new_dish->fill($validated_data);
-            dd($new_dish);
+           // dd($new_dish);
             $new_dish->save();
         } else {
          
@@ -73,8 +73,10 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Dish $dish) {
-        return view('restaurant.dish.show', compact('dish'));
+    public function show($id) {
+        $singledish = Dish::findOrFail($id);
+
+        return view('user.dish.show', compact('singledish'));
 
     }
 

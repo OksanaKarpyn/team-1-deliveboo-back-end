@@ -13,7 +13,7 @@ class StoreDishRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,7 @@ class StoreDishRequest extends FormRequest
      */
     public function rules()
     {
+       
         return [
             //
             'name' => ['string', 'max:255', 'required'],
