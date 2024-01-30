@@ -86,9 +86,10 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dish $dish) {
-
-        return view('restaurant.dish.show', compavt('dish'));
+    public function edit($id) {
+        $dish = Dish::find($id);
+        //dd( $dish);
+        return view('user.dish.edit', compact('dish'));
         
     }
 
@@ -99,8 +100,33 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDishRequest $request, Dish $dish) {
-        return redirect()->route(); 
+    public function update(StoreDishRequest $request, Dish $dish) {
+        $validated_data = $request->validated(); 
+        
+        // if($request->hasFile('photo')){
+        //     if( $dish->photo ){
+        //         Storage::delete($dish->photo);
+        //     }
+        //     $path = Storage::disk('public')->put('folderPhoto', $request->photo);
+        //     $form_data['photo'] = $path;
+        // }
+        // if ($request->has('delete_photo')) {
+        //     if ($dish->photo) {
+        //         Storage::delete($dish->photo);
+        //         $dish->photo = null;
+        //     }
+        // }
+        if($request->hasFile('photo')){
+            $path_img = Storage::disk('public')->put('folderPhoto', $request->photo);
+            $validated_data['photo'] = $path_img;
+            // dd($path_img);
+            
+        }
+        $validated_data['restaurant_id'] = Auth::user()->id;
+        $dish->fill($validated_data);
+        $dish->update();
+
+       return redirect()->route('user.dish.index');
     }
 
     /**
@@ -109,11 +135,11 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dish $dish) {
+    public function destroy($id) {
 
-        Dish::destroy($dish->id);
-
-        return redirect()->route('user.dishes.index');
+        $dish = Dish::find($id);
+        $dish->delete();
+        return redirect()->route('user.dish.index');
         
     }
 }

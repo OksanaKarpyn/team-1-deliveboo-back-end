@@ -1,6 +1,9 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
+
+        <a class="btn btn-success text-white me-3 fs-5 my-5" href="{{ route('user.dish.index') }}">&larr; torna indietro</a>
+
         <div class="row">
             <div class="col-5 m-auto">
                 <div class="card" style="width: 18rem;">
@@ -19,7 +22,7 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $singledish->name }}</h5>
                         <p class="card-text">{{ $singledish->description }}</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+
                     </div>
                 </div>
             </div>

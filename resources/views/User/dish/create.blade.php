@@ -9,7 +9,6 @@
                     <label for="name" class="form-label">Nome Piatto</label>
                     <input type="text" name="name" id="name"
                         class="form-control @error('name') is-invalid @enderror">
-                    <div id="name-error" class="text-danger"></div>
                     @error('name')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -29,7 +28,6 @@
                     <label for="ingredients" class="form label">Ingredienti</label>
                     <input type="text" name="ingredients" id="ingredients"
                         class="form-control @error('ingredients') is-invalid @enderror">
-                    <div id="ingredients-error" class="text-danger"></div>
                     @error('ingredients')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -39,9 +37,9 @@
 
                 <div class="mb-4 row">
                     <label for="description" class="form-label">Descrizione</label>
-                    <input type="text" name="description" id="description" maxlength="1000"
-                        class="form-control @error('description') is-invalid @enderror">
-                    <div id="description-error" class="text-danger"></div>
+                    <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror"
+                        rows="5" maxlength="1000"></textarea>
+
                     @error('description')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -53,14 +51,13 @@
                     <label for="price" class="form-label">Prezzo</label>
                     <input type="number" name="price" id="price"
                         class="form-control @error('price') is-invalid @enderror">
-                    <div id="price-error" class="text-danger"></div>
                     @error('price')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
-                
+
                 <button type="submit" class="btn btn-secondary
                 ">Crea piatto</button>
             </form>
