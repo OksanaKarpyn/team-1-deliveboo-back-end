@@ -33,6 +33,20 @@
             <div class="card-body">
                 <h5 class="card-title">{{ $restaurant->activity_name }}</h5>
                 <p class="card-text">{{ $restaurant->address }}.</p>
+                <p class="card-text">
+                    @if ($restaurant->types)
+                        <div class="py-1">
+                            <strong>Tipologie:</strong><br>
+                            <ul>
+                                @foreach ($restaurant->types as $elem)
+                                    <li>
+                                        {{ $elem->name }}
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                </p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
