@@ -21,6 +21,7 @@
                     @endif
                     <div class="card-body">
                         <h5 class="card-title">{{ $singledish->name }}</h5>
+                        <h1 class="card-title">{{ $singledish->name }}</h1>
                         <p class="card-text">{{ $singledish->description }}</p>
 
                     </div>
