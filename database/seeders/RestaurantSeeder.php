@@ -21,11 +21,12 @@ class RestaurantSeeder extends Seeder
         foreach($users as $userElem){
             $newRestaurants = new Restaurant();
             $newRestaurants->user_id = $userElem->id;
-            $newRestaurants->name = $faker->name();
+            $newRestaurants->activity_name = $faker->name();
             $newRestaurants->address = $faker->address();
             $newRestaurants->photo = 'null';
             $newRestaurants->phone = $faker->phoneNumber();
             $newRestaurants->description = $faker->text(100);
+            $newRestaurants->p_iva = $faker->randomNumber(7, true);
             $newRestaurants->save();
         }
     }

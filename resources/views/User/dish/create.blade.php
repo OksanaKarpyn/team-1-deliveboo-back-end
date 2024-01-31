@@ -3,6 +3,8 @@
     <div class="container">
         <div class="col-5 m-auto">
             <h1>Crea in nuovo piatto </h1>
+            <a class="btn btn-success text-white me-3 fs-5 my-5" href="{{ route('user.dish.index') }}">&larr; torna
+                indietro</a>
             <form action="{{ route('user.dish.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-4 row">
