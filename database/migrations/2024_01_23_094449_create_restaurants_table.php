@@ -16,7 +16,7 @@ return new class extends Migration
             // ID PRIMARY KEY
             $table->id();
             // USER_ID FOREIGN KEY
-            $table->foreignId('user_id')->references('id')->on('users')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->unique()->references('id')->on('users')->constrained()->onDelete('cascade');
             $table->string('activity_name');
             $table->string('address');
             $table->string('phone')->nullable();
