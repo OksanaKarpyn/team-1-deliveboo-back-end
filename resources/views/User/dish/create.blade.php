@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
     <div class="container">
-        <div class="col-5 m-auto">
+        <div class="col-5 m-auto mb-4">
             <h1>Crea in nuovo piatto </h1>
             <a class="btn btn-success text-white me-3 fs-5 my-5" href="{{ route('user.dish.index') }}">&larr; torna
                 indietro</a>
@@ -59,7 +59,16 @@
                         </span>
                     @enderror
                 </div>
-
+                <div class="mb-4 row">
+                    <label>
+                        <input type="radio" name="avaible" value="1" {{ old('avaible') == 1 ? 'checked' : '' }}>
+                        Disponibile
+                    </label>
+                    <label>
+                        <input type="radio" name="avaible" value="0" {{ old('avaible') == 0 ? 'checked' : '' }}> Non
+                        disponibile
+                    </label>
+                </div>
                 <button type="submit" class="btn btn-secondary
                 ">Crea piatto</button>
             </form>

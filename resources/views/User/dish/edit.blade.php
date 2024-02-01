@@ -101,6 +101,18 @@
                         </span>
                     @enderror
                 </div>
+                <div class="mb-4 row">
+                    <label>
+                        <input type="radio" name="avaible" value="1"
+                            {{ old('avaible', $dish->avaible) == 1 ? 'checked' : '' }}>
+                        Disponibile
+                    </label>
+                    <label>
+                        <input type="radio" name="avaible" value="0"
+                            {{ old('avaible', $dish->avaible) == 0 ? 'checked' : '' }}> Non
+                        disponibile
+                    </label>
+                </div>
 
                 <button type="submit" class="btn btn-secondary
                 ">Salva piatto</button>

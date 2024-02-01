@@ -38,6 +38,7 @@ class DishSeeder extends Seeder
                 $newDishes->description = $faker->text(100);
                 $newDishes->ingredients = $faker->words(5,true);
                 $newDishes->price = $faker->randomFloat(2, 5, 20);
+                $newDishes->avaible = $faker->boolean();
                 $newDishes->save();
             }
 

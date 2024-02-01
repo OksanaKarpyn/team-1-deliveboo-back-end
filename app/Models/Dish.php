@@ -15,7 +15,8 @@ class Dish extends Model
         'photo',
         'description',
         'ingredients',
-        'price'
+        'price',
+        'avaible',
     ];
 
     protected $appends = [

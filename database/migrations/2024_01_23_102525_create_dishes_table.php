@@ -17,7 +17,7 @@ return new class extends Migration
 
             // ID PRIMARY KEY
             $table->id();
-            $table->timestamps();
+           
             // RESTAURANT_ID FOREIGN KEY
             $table->unsignedBigInteger('restaurant_id')->nullable();
             $table->foreign('restaurant_id')
@@ -29,7 +29,9 @@ return new class extends Migration
             $table->text('photo')->nullable();
             $table->text('description', 300)->nullable();
             $table->text('ingredients', 250)->nullable();
+            $table->boolean('avaible')->tinyint(1);
             $table->decimal('price', 4, 2);
+            $table->timestamps();
         });
     }
 
