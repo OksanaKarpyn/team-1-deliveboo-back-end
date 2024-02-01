@@ -4,10 +4,10 @@
     <div class="container mt-4">
         <div class="row justify-content-center">
             {{-- Sezione di registrazione dell'utente --}}
-            <div class="col-md-6 my-4">
+            <div class="col-xs-12 col-md-6 col-xl-6 my-4">
                 <div class="card bg-white p-2 p-md-4 rounded-5">
-                    <div class="card-header bg-yellow rounded-5 text-center fs-2 fw-bold mb-4">{{ __('Registrati') }}</div>
-                    <form method="POST" action="{{ route('register') }}">
+                    <div class="card-header bg-yellow rounded-5 text-center fs-2 fw-bold mb-4 custom-title">{{ __('Registrati') }}</div>
+                    <form method="POST" action="{{ route('register') }}" style="max-width: 300px; margin: 0 auto;">
                         @csrf
                         <h4 class="text-center">Utente</h4>
                         {{-- Nome Utente --}}
@@ -91,10 +91,10 @@
                 </div>    
             </div>
             {{-- Sezione registrazione Ristorante --}}
-            <div class="col-md-6 my-4">
+            <div class="col-xs-12 col-md-6 col-xl-6 my-4">
                 <div class="card bg-white p-2 p-md-4 rounded-5">
-                    <div class="card-header text-center bg-aqua rounded-5 fs-2 fw-bold mb-4">{{ __('Registra Attività') }}</div>
-                        <form method="POST" action="{{ route('register') }}">
+                    <div class="card-header text-center bg-aqua rounded-5 fs-2 fw-bold mb-4 custom-title">{{ __('Registra Attività') }}</div>
+                        <form method="POST" action="{{ route('register') }}" style="max-width: 300px; margin: 0 auto;">
                             @csrf
                             <h4 class="text-center">Ristorante</h4>
                             {{-- Nome ristorante --}}
