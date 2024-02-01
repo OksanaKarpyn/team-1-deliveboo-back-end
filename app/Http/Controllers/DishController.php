@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Dish\StoreDishRequest;
 use App\Http\Requests\Dish\UpdateDishRequest;
 use App\Models\Dish;
+use App\Models\User;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -18,8 +20,18 @@ class DishController extends Controller
      */
     public function index() {
         
-        $dishes = Dish::all();
-        return view('user.dish.index', compact('dishes'));
+        $restaurant = Auth::user()->restaurant;
+        if ($restaurant) {
+            //dishes() prende dal model restaurant da questa relazione
+             //public function dishes(){return $this->hasMany(Dish::class);}
+             
+             $dishes = $restaurant->dishes()->get();
+             
+             return view('user.dish.index', compact('dishes'));
+         } else {
+             // Il ristorante non esiste per l'utente autenticato
+             return redirect()->back()->with('error', 'Devi creare un ristorante prima di visualizzare i piatti.');
+         }
         
     }
 
