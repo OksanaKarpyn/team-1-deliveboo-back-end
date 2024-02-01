@@ -95,6 +95,10 @@
         </main>
     </div>
     @yield('script')
+
+    <div class="text-center mx-4 my-4">
+       <h6>Copyright © 2024 DeliveryBee™.🐝 Tutti i diritti riservati a Oksana,Simona,Andrea,Alessandro,Luca e Stefano 💙.</h6>
+    </div>
 </body>
 
 </html>

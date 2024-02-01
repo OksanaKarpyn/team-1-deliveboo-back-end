@@ -6,7 +6,7 @@
             {{-- Sezione di registrazione dell'utente --}}
             <div class="col-md-6 my-4">
                 <div class="card bg-white p-2 p-md-4 rounded-5">
-                    <div class="card-header text-center fs-2 fw-bold mb-4">{{ __('Registrati') }}</div>
+                    <div class="card-header bg-yellow rounded-5 text-center fs-2 fw-bold mb-4">{{ __('Registrati') }}</div>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <h4 class="text-center">Utente</h4>
@@ -93,7 +93,7 @@
             {{-- Sezione registrazione Ristorante --}}
             <div class="col-md-6 my-4">
                 <div class="card bg-white p-2 p-md-4 rounded-5">
-                    <div class="card-header text-center fs-2 fw-bold mb-4">{{ __('Registra Attività') }}</div>
+                    <div class="card-header text-center bg-aqua rounded-5 fs-2 fw-bold mb-4">{{ __('Registra Attività') }}</div>
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
                             <h4 class="text-center">Ristorante</h4>

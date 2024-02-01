@@ -29,6 +29,7 @@
     */
 
     --yellow: #FFCF0E; 
+    --aqua: #28ACEC;
 
 }
 *{
@@ -43,6 +44,14 @@
 
 .color-logo {
     color:var(--yellow);
+}
+
+.bg-yellow {
+    background-color: var(--yellow);
+}
+
+.bg-aqua {
+    background-color: var(--aqua);
 }
 
 /*-----------------------------------*\
