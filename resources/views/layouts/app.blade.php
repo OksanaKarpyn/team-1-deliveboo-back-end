@@ -29,9 +29,10 @@
         <nav class="navbar navbar-expand-md navbar-light bg-trasparent shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo_laravel">
+                    <div class="logo_laravel d-flex justify-content-center align-items-center color-logo">
                         {{-- <img class="logo-mt" src="{{ Vite::asset('img/file-img-png/logo/logo.png') }}" alt="logo"> --}}
                         <img src="./logo.png" alt="logo" style="max-height: 70px;">
+                        <h6>DELIVERYBEE</h6>
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
