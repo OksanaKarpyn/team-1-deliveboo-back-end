@@ -12,10 +12,10 @@
                         @csrf
 
                         <div class="mb-4 row justify-content-center">
-                            <label for="email"></label>
+                            <label for="email"></i></label>
 
                             <div class="col-md-8">
-                                <input id="email" placeholder="Username.." type="email" class="form-control rounded-5 fs-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <input id="email" placeholder="👤 Username.." type="email" class="form-control rounded-5 fs-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                             <label for="password"></label>
 
                             <div class="col-md-8">
-                                <input id="password" placeholder="Password.." type="password" class="form-control rounded-5 fs-input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                <input id="password" placeholder="🔑 Password.." type="password" class="form-control rounded-5 fs-input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                 @error('password')
                                 <span class="invalid-feedback" role="alert">
