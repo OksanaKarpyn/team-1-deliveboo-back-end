@@ -29,7 +29,7 @@
                         <div class="col-12 d-flex align-items-center gap-3">
                             <input type="text"
                                 class="form-control fs-s-7 rounded-5 @error('lastname') is-invalid @enderror"
-                                name="lastname" id="lastname " name="lastname" value="{{ old('lastname') }}"
+                                name="lastname" id="lastname" value="{{ old('lastname') }}"
                                 placeholder="Cognome" required>
                             <span class="text-danger">*</span>
                         </div>
@@ -178,6 +178,7 @@
                         <button type="submit" class="col-12 col-md-12 btn btn-primary rounded-5 p-2">
                             {{ __('Register') }}
                         </button>
+                    </div>
                 </form>
             </div>
         </div>
