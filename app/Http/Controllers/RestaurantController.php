@@ -11,6 +11,7 @@ use App\Http\Requests\Restaurant\UpdateRestaurantRequest;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RestaurantController extends Controller
 {
@@ -104,7 +105,7 @@ class RestaurantController extends Controller
     public function update(UpdateRestaurantRequest $request, Restaurant $restaurant)
     {
         
-        return redirect()->route(); //da determinare redirect
+        // return redirect()->route(); //da determinare redirect
     }
 
     /**

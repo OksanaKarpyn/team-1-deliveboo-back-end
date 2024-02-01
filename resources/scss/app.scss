@@ -1,1 +1,58 @@
-@import '~bootstrap/scss/bootstrap'
+@import '~bootstrap/scss/bootstrap';
+
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+/*-----------------------------------*\
+ * #CUSTOM PROPERTY
+\*-----------------------------------*/
+
+:root {
+
+    /**
+    * typography
+    */
+    --fs-1: 2em;
+    --fs-2: calc(1.813rem + 1vw);
+    --fs-3: calc(1.313rem + 1vw);
+    --fs-4: 1.4rem;
+    --fs-5: 1rem;
+    --fs-6: 0.813rem;
+    --fs-7: 0.75rem;
+
+    --fw-400: 400;
+    --fw-700: 700;
+
+}
+
+
+/*-----------------------------------*\
+ * #LOGIN / REGISTER
+\*-----------------------------------*/
+
+.bg-guest {
+    min-height: 100vh;
+    background-image: url('../img/file-img-png/background-page-login/pagina-login-completa.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.fs-s-7 {
+
+    font-size: var(--fs-7);
+}
+
+.fs-input {
+    font-size: var(--fs-7);
+}
+
+.logo_laravel {
+    width: 200px;
+}
+
+.logo-mt {
+    width: 50px;
+    height: 50px;
+}
