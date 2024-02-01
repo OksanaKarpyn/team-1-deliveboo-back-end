@@ -10,12 +10,13 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Font Awesome CDN -->
-    <link href="{{ asset('scss/app.scss') }}" rel="stylesheet">
-
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+
+    {{-- Fontawesome --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!--  Vite -->
     @vite('resources/js/app.js')
@@ -28,9 +29,10 @@
         <nav class="navbar navbar-expand-md navbar-light bg-trasparent shadow-sm">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <div class="logo_laravel">
+                    <div class="logo_laravel d-flex justify-content-center align-items-center color-logo">
                         {{-- <img class="logo-mt" src="{{ Vite::asset('img/file-img-png/logo/logo.png') }}" alt="logo"> --}}
                         <img src="./logo.png" alt="logo" style="max-height: 70px;">
+                        <h6>DELIVERYBEE</h6>
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
@@ -45,7 +47,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
+                            <a class="nav-link" href="{{ url('/user/restaurant') }}">{{ __('Home') }}</a>
                         </li>
                     </ul>
 
