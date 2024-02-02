@@ -134,7 +134,6 @@ class RestaurantController extends Controller
         }
 
         return redirect()->route('user.restaurant.index')->with('message', 'Ristorante aggiornato con successo'); //da determinare redirect
-
     }
 
     /**

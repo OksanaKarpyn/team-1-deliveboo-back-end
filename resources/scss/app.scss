@@ -1,19 +1,151 @@
 @import '~bootstrap/scss/bootstrap';
-@import 'bootstrap-icons/font/bootstrap-icons.css';
+@import '@fortawesome/fontawesome-free/scss/brands';
+@import '@fortawesome/fontawesome-free/scss/regular';
+@import '@fortawesome/fontawesome-free/scss/solid';
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
 
-* {
-    padding: 0;
+/************************************************
+    CUSTOM PROPERTIES
+************************************************/
+
+
+:root {
+
+    /**
+    * typography
+    */
+    --fs-1: 2em;
+    --fs-2: calc(1.813rem + 1vw);
+    --fs-3: calc(1.313rem + 1vw);
+    --fs-4: 1.4rem;
+    --fs-5: 1rem;
+    --fs-6: 0.813rem;
+    --fs-7: 0.75rem;
+
+    --fw-400: 400;
+    --fw-700: 700;
+
+     /**
+    * color
+    */
+
+    --yellow: #FFCF0E; 
+    --aqua: #28ACEC;
+
+}
+*{
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-body {
-    font-family: "Single Day", cursive;
-    font-weight: 400;
-    font-style: normal;
+/*************************************************
+    GENERAL STYLES & UTILITIES
+*************************************************/
+
+.color-logo {
+    color:var(--yellow);
 }
 
-textarea {
-    resize: none;
+.bg-yellow {
+    background-color: var(--yellow);
 }
+
+.bg-aqua {
+    background-color: var(--aqua);
+}
+
+/************************************************
+    SITE SECTIONS
+************************************************/
+
+/* 
+    ?LOGIN & REGISTER
+*/
+
+
+.bg-guest {
+    min-height: 100vh;
+    background-image: url('../img/file-img-png/background-page-login/pagina-login-completa.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.fs-s-7 {
+    font-size: var(--fs-7);
+}
+.fs-s-6{
+    font-size: var(--fs-6);
+}
+.fs-input {
+    font-size: var(--fs-7);
+}
+
+.logo_laravel {
+    width: 200px;
+}
+
+.logo-mt {
+    width: 50px;
+    height: 50px;
+}
+
+.custom-title {
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+/************************************************
+    SOLUZIONE RESPONSIVE-MEDIA-QUERY MOBILE-FIRST
+************************************************/
+
+/* Stile per schermi piccoli */
+@media screen and (max-width: 480px) {
+
+    /* COLUMNS */
+
+
+}
+
+/* Stile Per tablet */
+@media screen and (max-width: 768px){
+     
+    /*  COLUMNS  */
+
+
+
+}
+/* Stile Per Laptops */
+@media screen and (max-width: 999px){
+     
+    /*  COLUMNS  */
+
+    .none {
+        display: none;
+    }
+
+}
+
+/* Stili per Desktop */
+@media screen and (max-width:1279px){
+
+    /*  COLUMNS  */
+
+
+
+}
+
+/* Stili per Desktop XL */
+@media screen and (max-width:3652px){
+
+    /*  COLUMNS  */
+
+
+
+}
+
+/*************************************************
+    DEBUG
+*************************************************/
 

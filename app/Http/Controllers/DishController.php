@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Dish\StoreDishRequest;
 use App\Http\Requests\Dish\UpdateDishRequest;
 use App\Models\Dish;
+use App\Models\User;
+use App\Models\Restaurant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class DishController extends Controller
 {
@@ -16,8 +20,18 @@ class DishController extends Controller
      */
     public function index() {
         
-            $dish = Dish::all();
-            return view('user.dish.index', compact('dishes'));
+        $restaurant = Auth::user()->restaurant;
+        if ($restaurant) {
+            //dishes() prende dal model restaurant da questa relazione
+             //public function dishes(){return $this->hasMany(Dish::class);}
+             
+             $dishes = $restaurant->dishes()->get();
+             
+             return view('user.dish.index', compact('dishes'));
+         } else {
+             // Il ristorante non esiste per l'utente autenticato
+             return redirect()->back()->with('error', 'Devi creare un ristorante prima di visualizzare i piatti.');
+         }
         
     }
 
@@ -40,22 +54,28 @@ class DishController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(StoreDishRequest $request) {
-
-        $formData = $request->validated();
-        $photo_path = null;
-
-        if (isset($formData['photo'])) {
-            $photo_path = Storage::put('uploads/images', $formData['photo']);
+        //dd($request);
+        $validated_data = $request->validated();
+        if($request->hasFile('photo')){
+            $path_img = Storage::disk('public')->put('folderPhoto', $request->photo);
+            $validated_data['photo'] = $path_img;
+            // dd($path_img);
+            
         }
-        
-        $dish = Dish::create([
-                
-                'photo' => $photo_path,
 
-            ]
-        );
+        if (Auth::user()->restaurant) {
+            $new_dish = new Dish();
+            $validated_data['restaurant_id'] = Auth::user()->restaurant->id;
+            $new_dish->fill($validated_data);
+           // dd($new_dish);
+            $new_dish->save();
+        } else {
+         
+            dd("L'utente non ha un ristorante associato.");
+            return redirect()->back()->with('error', 'Devi creare un ristorante prima di aggiungere piatti.');
+        }
 
-        return redirect()->route('dish.index');
+        return redirect()->route('user.dish.index');
 
     }
 
@@ -65,8 +85,10 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Dish $dish) {
-        return view('restaurant.dish.show', compact('dish'));
+    public function show($id) {
+        $singledish = Dish::findOrFail($id);
+
+        return view('user.dish.show', compact('singledish'));
 
     }
 
@@ -76,9 +98,10 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dish $dish) {
-
-        return view('restaurant.dish.show', compavt('dish'));
+    public function edit($id) {
+        $dish = Dish::find($id);
+        //dd( $dish);
+        return view('user.dish.edit', compact('dish'));
         
     }
 
@@ -89,8 +112,33 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateDishRequest $request, Dish $dish) {
-        return redirect()->route(); 
+    public function update(StoreDishRequest $request, Dish $dish) {
+        $validated_data = $request->validated(); 
+        
+        // if($request->hasFile('photo')){
+        //     if( $dish->photo ){
+        //         Storage::delete($dish->photo);
+        //     }
+        //     $path = Storage::disk('public')->put('folderPhoto', $request->photo);
+        //     $form_data['photo'] = $path;
+        // }
+        // if ($request->has('delete_photo')) {
+        //     if ($dish->photo) {
+        //         Storage::delete($dish->photo);
+        //         $dish->photo = null;
+        //     }
+        // }
+        if($request->hasFile('photo')){
+            $path_img = Storage::disk('public')->put('folderPhoto', $request->photo);
+            $validated_data['photo'] = $path_img;
+            // dd($path_img);
+            
+        }
+        $validated_data['restaurant_id'] = Auth::user()->id;
+        $dish->fill($validated_data);
+        $dish->update();
+
+       return redirect()->route('user.dish.index');
     }
 
     /**
@@ -99,11 +147,11 @@ class DishController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dish $dish) {
+    public function destroy($id) {
 
-        Dish::destroy($dish->id);
-
-        return redirect()->route('user.dishes.index');
+        $dish = Dish::find($id);
+        $dish->delete();
+        return redirect()->route('user.dish.index');
         
     }
 }
