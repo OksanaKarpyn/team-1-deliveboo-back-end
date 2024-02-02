@@ -29,7 +29,7 @@
     * color
     */
 
-    --yellow: #FFCF0E; 
+    --yellow: #FFCF0E;
     --aqua: #28ACEC;
 
 }
@@ -54,12 +54,36 @@
 .bg-aqua {
     background-color: var(--aqua);
 }
+.text-yellow{
+    color: var(--yellow);
+}
+.aside-link{
+    color: white;
+    &:hover{
+        cursor: pointer;
+        color: var(--yellow)!important;
+    }
+}
+.logout{
+    color: black;
+    &:hover{
+        color: red;
+        cursor: pointer;
+    }
+
+}
+.h-15{
+    height: 15%;
+}
+main{
+    height: calc(100% - 15%);
+}
 
 /************************************************
     SITE SECTIONS
 ************************************************/
 
-/* 
+/*
     ?LOGIN & REGISTER
 */
 
@@ -110,7 +134,7 @@
 
 /* Stile Per tablet */
 @media screen and (max-width: 768px){
-     
+
     /*  COLUMNS  */
 
 
@@ -118,12 +142,13 @@
 }
 /* Stile Per Laptops */
 @media screen and (max-width: 999px){
-     
+
     /*  COLUMNS  */
 
     .none {
         display: none;
     }
+
 
 }
 
@@ -140,8 +165,16 @@
 @media screen and (max-width:3652px){
 
     /*  COLUMNS  */
-
-
+    .bg-row{
+        background-color: var(--yellow);
+        height: 20px;
+        width: 100%;
+        padding: 0;
+    }
+    .fa-magnifying-glass{
+        position: relative;
+        left: -25px;
+    }
 
 }
 

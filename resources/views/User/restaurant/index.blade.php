@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts/personal.app')
+@section('Page-name')
+    <div class="text-white fs-4">Dashboard Management</div>
+@endsection
 @section('content')
     <section class="container">
         <div class="card" style="width: 18rem;">
