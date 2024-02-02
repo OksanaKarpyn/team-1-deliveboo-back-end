@@ -8,9 +8,9 @@
                 <div class="row justify-content-between align-items-center row-cols-1 row-cols-md-2">
                     <div class="col">
                         <div class="card bg-white p-2 p-md-4 rounded-5 margin-xy">
-                            <div class="card-header bg-yellow rounded-5 text-center fs-2 fw-bold mb-4 custom-title">
+                            <div class="card-header bg-yellow rounded-5 text-center fs-5 fw-bold mb-4 custom-title">
                                 {{ __('Registrati') }}</div>
-                            <h4 class="text-center">Utente</h4>
+                            <h4 class="text-center fs-6">Utente</h4>
                             {{-- Nome Utente --}}
                             <div class="mb-4 row justify-content-center align-items-center">
                                 <div class="col-12  d-flex align-items-center gap-3">
@@ -96,9 +96,9 @@
                     {{-- Sezione registrazione Ristorante --}}
                     <div class="col">
                         <div class="card bg-white p-2 p-md-4 rounded-5 margin-xy">
-                            <div class="card-header text-center bg-aqua rounded-5 fs-2 fw-bold mb-4 custom-title">
+                            <div class="card-header text-center bg-aqua rounded-5 fs-5 fw-bold mb-4 custom-title">
                                 {{ __('Registra Attività') }}</div>
-                            <h4 class="text-center">Ristorante</h4>
+                            <h4 class="text-center fs-6">Ristorante</h4>
                             {{-- Nome ristorante --}}
                             <div class="mb-4 row justify-content-center align-items-center">
                                 <div class="col-12 d-flex align-items-center gap-3">
@@ -190,7 +190,7 @@
                 {{-- Pulsante Conferma --}}
                 <div class="row justify-content-center align-items-center my-5 px-4">
                     <button type="submit" class="col-12 col-md-12 btn btn-primary rounded-5 p-2 w-50 w-md-25">
-                        {{ __('Register') }}
+                        {{ __('Iscriviti a DevileryBee') }}
                     </button>
                 </div>
             </form>
