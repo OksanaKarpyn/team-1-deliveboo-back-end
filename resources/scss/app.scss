@@ -4,9 +4,11 @@
 @import '@fortawesome/fontawesome-free/scss/regular';
 @import '@fortawesome/fontawesome-free/scss/solid';
 @import '@fortawesome/fontawesome-free/scss/fontawesome';
-/*-----------------------------------*\
- * #CUSTOM PROPERTY
-\*-----------------------------------*/
+
+/************************************************
+    CUSTOM PROPERTIES
+************************************************/
+
 
 :root {
 
@@ -38,9 +40,9 @@
     box-sizing: border-box;
 }
 
-/*-----------------------------------*\
- * #COLOR
-\*-----------------------------------*/
+/*************************************************
+    GENERAL STYLES & UTILITIES
+*************************************************/
 
 .color-logo {
     color:var(--yellow);
@@ -54,9 +56,14 @@
     background-color: var(--aqua);
 }
 
-/*-----------------------------------*\
- * #LOGIN / REGISTER
-\*-----------------------------------*/
+/************************************************
+    SITE SECTIONS
+************************************************/
+
+/* 
+    ?LOGIN & REGISTER
+*/
+
 
 .bg-guest {
     min-height: 100vh;
@@ -89,3 +96,56 @@
     max-width: 300px;
     margin: 0 auto;
 }
+
+/************************************************
+    SOLUZIONE RESPONSIVE-MEDIA-QUERY MOBILE-FIRST
+************************************************/
+
+/* Stile per schermi piccoli */
+@media screen and (max-width: 480px) {
+
+    /* COLUMNS */
+
+
+}
+
+/* Stile Per tablet */
+@media screen and (max-width: 768px){
+     
+    /*  COLUMNS  */
+
+
+
+}
+/* Stile Per Laptops */
+@media screen and (max-width: 999px){
+     
+    /*  COLUMNS  */
+
+    .none {
+        display: none;
+    }
+
+}
+
+/* Stili per Desktop */
+@media screen and (max-width:1279px){
+
+    /*  COLUMNS  */
+
+
+
+}
+
+/* Stili per Desktop XL */
+@media screen and (max-width:3652px){
+
+    /*  COLUMNS  */
+
+
+
+}
+
+/*************************************************
+    DEBUG
+*************************************************/

@@ -96,7 +96,7 @@
     </div>
     @yield('script')
 
-    <footer class="container-fluid fixed-bottom">
+    <footer class="container-fluid">
         <div class="text-center mx-5 my-5">
             <h6>Copyright © 2024 DeliveryBee™.🐝 <br> Tutti i diritti riservati a Oksana,Simona,Andrea,Alessandro,Luca e Stefano 💙.</h6>
          </div>

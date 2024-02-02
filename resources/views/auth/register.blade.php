@@ -84,7 +84,7 @@
                                 Ci Sei quasi..
                                 <br>
                                 Completa il riquadro accanto
-                                ➡️
+                                <span class="none">➡️</span>
                             </h5>
                         </div>
                     </form>    
