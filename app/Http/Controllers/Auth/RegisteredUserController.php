@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Restaurant;
 use App\Models\User;
 use App\Models\Restaurant;
 use App\Models\Type;
@@ -62,10 +63,13 @@ class RegisteredUserController extends Controller
             $restaurant->types()->attach($request->types);
         };
         
-        event(new Registered($user, $restaurant));
+        
+        event(new Registered($user));
+
 
         Auth::login($user);
 
         return to_route('user.restaurant.index');
+
     }
 }

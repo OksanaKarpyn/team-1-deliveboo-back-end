@@ -53,5 +53,13 @@
 
         {{-- <a class="btn btn-success" href="{{ route('user.dish.create') }}">Crea Nuovo Piatto</a> --}}
         <a class="btn btn-success text-white me-3 fs-5 my-5" href="{{ route('user.dish.index') }}">lista piatti</a>
+<section class="container">
+    <div class="mt-3 row justify-content-between gap-3 align-items-center">
+        <div class="card p-3 fs-4 fw-bold col-8">{{ $restaurant->name }}</div>
+        <a href="{{ route('user.restaurant.edit', $restaurant )}}" class="btn btn-primary col-3 p-3">Modifica</a>
+    </div>
+        @foreach ($restaurant->types as $type)
+            <div>{{ $type->name }}</div>
+        @endforeach
     </section>
 @endsection
