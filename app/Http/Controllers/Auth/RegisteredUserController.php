@@ -55,6 +55,7 @@ class RegisteredUserController extends Controller
             'activity_name' => $request->activity_name,
             'address' => $request->address,
             'p_iva'=>$request->p_iva,
+            'phone' => $request->phone,
         ]);
     
         if($request->has('types')){
@@ -63,11 +64,8 @@ class RegisteredUserController extends Controller
         
         event(new Registered($user, $restaurant));
 
-
-
-
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME);
+        return to_route('user.restaurant.index');
     }
 }
