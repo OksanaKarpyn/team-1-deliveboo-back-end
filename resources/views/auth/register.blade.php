@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container mt-4">
-        <div class="row justify-content-center">
-            <form method="POST" action="{{ route('register') }}">
+        <div class="row justify-content-center align-items-center">
+            <form method="POST" action="{{ route('register') }}" class="width-100">
                 @csrf
                 <div class="row justify-content-between align-items-center row-cols-1 row-cols-md-2">
                     <div class="col">
-                        <div class="card bg-white p-2 p-md-4 rounded-5">
+                        <div class="card bg-white p-2 p-md-4 rounded-5 margin-xy">
                             <div class="card-header bg-yellow rounded-5 text-center fs-2 fw-bold mb-4 custom-title">
                                 {{ __('Registrati') }}</div>
                             <h4 class="text-center">Utente</h4>
@@ -85,7 +85,8 @@
                                 <h5>
                                     Ci Sei quasi..
                                     <br>
-                                    Completa il riquadro accanto
+                                    <br class="br-none">
+                                    <span class="none-two">Completa il riquadro accanto</span>
                                     <span class="none">➡️</span>
                                 </h5>
                             </div>
@@ -94,7 +95,7 @@
     
                     {{-- Sezione registrazione Ristorante --}}
                     <div class="col">
-                        <div class="card bg-white p-2 p-md-4 rounded-5">
+                        <div class="card bg-white p-2 p-md-4 rounded-5 margin-xy">
                             <div class="card-header text-center bg-aqua rounded-5 fs-2 fw-bold mb-4 custom-title">
                                 {{ __('Registra Attività') }}</div>
                             <h4 class="text-center">Ristorante</h4>

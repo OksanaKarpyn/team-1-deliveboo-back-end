@@ -55,6 +55,11 @@
     background-color: var(--aqua);
 }
 
+.br-none{
+
+    display: none;
+}
+
 /************************************************
     SITE SECTIONS
 ************************************************/
@@ -100,49 +105,62 @@
     SOLUZIONE RESPONSIVE-MEDIA-QUERY MOBILE-FIRST
 ************************************************/
 
-/* Stile per schermi piccoli */
-@media screen and (max-width: 480px) {
+/* EXTRA SMALL Stile per schermi piccoli */
+@media screen and (max-width: 600px) {
 
     /* COLUMNS */
 
 
+
+
 }
 
-/* Stile Per tablet */
+/*SMALL Stile Per tablet */
+@media screen and (min-width: 600px){
+    
+    /*  COLUMNS  */
+    
+
+}
+
+/*MEDIUM Stile Per Landscapes tablet */
 @media screen and (max-width: 768px){
      
     /*  COLUMNS  */
 
-
-
-}
-/* Stile Per Laptops */
-@media screen and (max-width: 999px){
-     
-    /*  COLUMNS  */
-
-    .none {
-        display: none;
+    .margin-xy {
+        margin: 0 30px 20px 30px;
     }
 
 }
 
-/* Stili per Desktop */
-@media screen and (max-width:1279px){
 
+/*LARGE Stile Per LAPTOPS/DESKTOPS */
+@media screen and (max-width: 992px){
+     
     /*  COLUMNS  */
 
+    .none ,
+    .none-two {
+        display: none;
+    }
+
+    .br-none {
+
+        display: inline;
+    }
 
 
 }
 
-/* Stili per Desktop XL */
-@media screen and (max-width:3652px){
+/*EXTRA LARGE Stili per DesktopS */
+@media screen and (min-width:1200px){
 
     /*  COLUMNS  */
 
-
-
+    .width-100 {
+        width: 800px;
+    }
 }
 
 /*************************************************
