@@ -1,9 +1,12 @@
-@extends('layouts.app')
+@extends('layouts.personal.app')
+
+@section('Page-name')
+Modifica - {{ $editRestaurant->activity_name }}
+@endsection
 
 @section('content')
-    <section class="container">
-        <h1 class="mt-3">Modifica - {{ $editRestaurant->activity_name }}</h1>
-        <form class="card d-block p-2" action="{{ route('user.restaurant.update', $editRestaurant) }}" method="POST"
+    <section class="container mt-2">
+        <form class="d-block p-2" action="{{ route('user.restaurant.update', $editRestaurant) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             @method('PUT')

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.personal.app')
 @section('content')
     <div class="container">
         <a class="btn btn-success text-white me-3 fs-5 my-5" href="{{ route('user.dish.index') }}">&larr; torna indietro</a>

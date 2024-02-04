@@ -1,6 +1,6 @@
 @extends('layouts/personal.app')
 @section('Page-name')
-    <div class="text-white fs-4">Dashboard Management</div>
+    Dashboard Management
 @endsection
 @section('content')
     <section class="m-3 content">
