@@ -116,7 +116,7 @@ class RestaurantController extends Controller
 
         $updateRestaurant = Restaurant::where('id', $restaurant->id)->first();
 
-        $updateRestaurant->name  = $data['name'];
+        $updateRestaurant->activity_name  = $data['name'];
         $updateRestaurant->address = $data['address'];
         $updateRestaurant->description = $data['description'];
         $updateRestaurant->phone = $data['phone'];

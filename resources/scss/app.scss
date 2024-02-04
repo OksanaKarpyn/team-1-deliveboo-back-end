@@ -75,10 +75,21 @@
 .h-15{
     height: 15%;
 }
-main{
+.content{
     height: calc(100% - 15%);
 }
-
+.my-btn{
+    text-align: center;
+    padding: 10px 20px;
+    color: black;
+    font-weight: bold;
+    border-radius: 15px;
+    &:hover{
+        color: var(--yellow);
+        background-color: black;
+        transition: 0.5s linear;
+    }
+}
 /************************************************
     SITE SECTIONS
 ************************************************/

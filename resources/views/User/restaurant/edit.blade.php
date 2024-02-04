@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="container">
-        <h1 class="mt-3">Modifica - {{ $editRestaurant->name }}</h1>
+        <h1 class="mt-3">Modifica - {{ $editRestaurant->activity_name }}</h1>
         <form class="card d-block p-2" action="{{ route('user.restaurant.update', $editRestaurant) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
@@ -10,7 +10,7 @@
             <div class="my-3">
                 <label for="name" class="form-label fw-bold">Nome</label>
                 <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name"
-                    value="{{ old('name', $editRestaurant->name) }}">
+                    value="{{ old('activity_name', $editRestaurant->activity_name) }}">
                 @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

@@ -85,9 +85,9 @@
                         <img src="https://placehold.co/50x50" class="rounded-circle">
                     </div>
                 </div>
-                <main class="overflow-y-scroll">
+                <section class="overflow-y-scroll content" >
                     @yield('content')
-                </main>
+                </section>
 
             </main>
         </div>
