@@ -6,7 +6,7 @@
     <section class="m-3 content">
         <div class="row h-100">
             <div class="col-8">
-                <div class="card h-75 mb-3 p-3">
+                <div class="card h-75 mb-3 p-3 overflow-hidden">
                     <div class="row justify-content-between align-items-center mb-3">
                         <h3 class="col-10">Piatti</h3>
                         <a href="{{ route('user.dish.create') }}" class="text-decoration-none my-btn bg-yellow col-2">Aggiungi
@@ -14,29 +14,32 @@
                     </div>
 
                     @if (count($restaurant->dishes) > 0)
-                        <table class="table align-middle text-center h-100">
-                            <thead>
-                                <tr>
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Photo</th>
-                                    <th scope="col">Nome</th>
-                                    <th scope="col">Visibile</th>
-                                    <th scope="col">Prezzo</th>
-                                </tr>
-                            </thead>
-                            <tbody class="table-group-divider">
-                                @foreach ($restaurant->dishes as $dish)
+                        <div class="overflow-y-scroll">
+                            <table class="table align-middle text-center">
+                                <thead>
                                     <tr>
-                                        <td>{{ $dish->id }}</td>
-                                        <td>{{ $dish?->photo }}</td>
-                                        <td>{{ $dish->name }}</td>
-                                        <td>{{ $dish->avaible }}</td>
-                                        <td>{{ $dish->price }}€</td>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">Photo</th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">Visibile</th>
+                                        <th scope="col">Prezzo</th>
                                     </tr>
-                                @endforeach
+                                </thead>
+                                <tbody class="table-group-divider">
+                                    @foreach ($restaurant->dishes as $index => $dish)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td><img src="{{ asset('storage/' . $dish?->photo) }}" alt=""
+                                                    style="width: 50px; height: 50px;" class="rounded-circle"></td>
+                                            <td>{{ $dish->name }}</td>
+                                            <td>{{ $dish->avaible == 1 ? 'Si' : 'No'  }}</td>
+                                            <td>{{ $dish->price }}€</td>
+                                        </tr>
+                                    @endforeach
 
-                            </tbody>
-                        </table>
+                                </tbody>
+                            </table>
+                        </div>
                     @else
                         <div class="row align-items-center mt-4 mx-3">
                             <p class="text-danger fs-4 fw-bold col-8 mb-0">Nessun piatto, aggiungi un nuovo piatto</p>
@@ -60,7 +63,7 @@
                     </div>
                     @if ($restaurant->photo)
                         <img src="{{ asset('storage/' . $restaurant->photo) }}" alt="" class="rounded-circle my-5"
-                        style="width:200px; height:200px">
+                            style="width:200px; height:200px">
                     @else
                         <div class="rounded-circle my-5 bg-dark" style="width:200px; height:200px"> </div>
                     @endif

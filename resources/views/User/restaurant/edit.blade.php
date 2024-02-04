@@ -6,6 +6,7 @@ Modifica - {{ $editRestaurant->activity_name }}
 
 @section('content')
     <section class="container mt-2">
+        <a href="{{ route('user.restaurant.index')}}" class="my-btn bg-danger text-white d-inline-block my-3">&larr; Home</a>
         <form class="d-block p-2" action="{{ route('user.restaurant.update', $editRestaurant) }}" method="POST"
             enctype="multipart/form-data">
             @csrf

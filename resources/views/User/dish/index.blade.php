@@ -13,9 +13,9 @@
         @if ($dishes->count() === 0)
             <h2 class="col-5 m-auto my-3"><em>Non ci sono ancora piatti creati</em></h2>
         @else
-            <div class="row overflow-y-scroll">
+            <div class="row row-cols-5 overflow-y-scroll">
                 @foreach ($dishes as $index => $dish)
-                    <div class="card col p-3 flex-column align-items-center">
+                    <div class="card p-3 flex-column align-items-center">
 
                         @if ($dish->photo)
                             <a class="img-link d-flex justify-content-center align-items-center"
