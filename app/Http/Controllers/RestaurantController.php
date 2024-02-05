@@ -22,8 +22,8 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurant = Restaurant::where('user_id', Auth::user()->id)->with('types')->first();
-        //
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->with('types','dishes')->first();
+        
         return view('user.restaurant.index', compact('restaurant'));
     }
 
@@ -116,7 +116,7 @@ class RestaurantController extends Controller
 
         $updateRestaurant = Restaurant::where('id', $restaurant->id)->first();
 
-        $updateRestaurant->name  = $data['name'];
+        $updateRestaurant->activity_name  = $data['name'];
         $updateRestaurant->address = $data['address'];
         $updateRestaurant->description = $data['description'];
         $updateRestaurant->phone = $data['phone'];

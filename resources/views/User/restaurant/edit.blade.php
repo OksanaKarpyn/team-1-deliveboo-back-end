@@ -1,16 +1,20 @@
-@extends('layouts.app')
+@extends('layouts.personal.app')
+
+@section('Page-name')
+Modifica - {{ $editRestaurant->activity_name }}
+@endsection
 
 @section('content')
-    <section class="container">
-        <h1 class="mt-3">Modifica - {{ $editRestaurant->name }}</h1>
-        <form class="card d-block p-2" action="{{ route('user.restaurant.update', $editRestaurant) }}" method="POST"
+    <section class="container mt-2">
+        <a href="{{ route('user.restaurant.index')}}" class="my-btn bg-danger text-white d-inline-block my-3">&larr; Home</a>
+        <form class="d-block p-2" action="{{ route('user.restaurant.update', $editRestaurant) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="my-3">
                 <label for="name" class="form-label fw-bold">Nome</label>
                 <input class="form-control @error('name') is-invalid @enderror" type="text" name="name" id="name"
-                    value="{{ old('name', $editRestaurant->name) }}">
+                    value="{{ old('activity_name', $editRestaurant->activity_name) }}">
                 @error('name')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

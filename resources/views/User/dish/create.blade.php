@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layouts.personal.app')
+@section('Page-name')
+Crea un nuovo piatto
+@endsection
 @section('content')
-    <div class="container">
-        <div class="col-5 m-auto mb-4">
-            <h1>Crea in nuovo piatto </h1>
-            <a class="btn btn-success text-white me-3 fs-5 my-5" href="{{ route('user.dish.index') }}">&larr; torna
-                indietro</a>
-            <form action="{{ route('user.dish.store') }}" method="POST" enctype="multipart/form-data" id="createForm">
+    <div class="container mt-2">
+            <a class="my-btn bg-danger text-white d-inline-block my-3" href="{{ route('user.dish.index') }}">&larr; Lista piatti</a>
+            <form action="{{ route('user.dish.store') }}" method="POST" enctype="multipart/form-data" id="createForm" class="my-4">
                 @csrf
                 <div class="mb-4 row">
                     <label for="name" class="form-label">Nome Piatto</label>
@@ -76,7 +76,7 @@
                         disponibile
                     </label>
                 </div>
-                <button type="submit" onclick="submitForm(event)" class="btn btn-secondary ">Crea piatto</button>
+                <button type="submit" onclick="submitForm(event)" class="btn btn-success ">Crea piatto</button>
             </form>
         </div>
 

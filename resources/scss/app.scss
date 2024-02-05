@@ -29,7 +29,7 @@
     * color
     */
 
-    --yellow: #FFCF0E; 
+    --yellow: #FFCF0E;
     --aqua: #28ACEC;
 
 }
@@ -54,7 +54,42 @@
 .bg-aqua {
     background-color: var(--aqua);
 }
-
+.text-yellow{
+    color: var(--yellow);
+}
+.aside-link{
+    color: white;
+    &:hover{
+        cursor: pointer;
+        color: var(--yellow)!important;
+    }
+}
+.logout{
+    color: black;
+    &:hover{
+        color: red;
+        cursor: pointer;
+    }
+}
+.h-15{
+    height: 15%;
+}
+.content{
+    height: calc(100% - 15%);
+}
+.my-btn{
+    text-align: center;
+    padding: 10px 20px;
+    color: black;
+    font-weight: bold;
+    border-radius: 15px;
+    text-decoration: none;
+    &:hover{
+        color: var(--yellow);
+        background-color: black;
+        transition: 0.5s linear;
+    }
+}
 .br-none{
 
     display: none;
@@ -64,7 +99,7 @@
     SITE SECTIONS
 ************************************************/
 
-/* 
+/*
     ?LOGIN & REGISTER
 */
 
@@ -111,7 +146,10 @@
     /* COLUMNS */
 
 
+/* Stile Per tablet */
+@media screen and (max-width: 768px){
 
+    /*  COLUMNS  */
 
 }
 
@@ -123,6 +161,11 @@
 
 }
 
+/* Stile Per Laptops */
+@media screen and (max-width: 999px){
+  
+  }
+
 /*MEDIUM Stile Per Landscapes tablet */
 @media screen and (max-width: 768px){
      
@@ -131,6 +174,7 @@
     .margin-xy {
         margin: 0 30px 20px 30px;
     }
+
 
 }
 
@@ -150,7 +194,17 @@
         display: inline;
     }
 
-
+    /*  COLUMNS  */
+    .bg-row{
+        background-color: var(--yellow);
+        height: 20px;
+        width: 100%;
+        padding: 0;
+    }
+    .fa-magnifying-glass{
+        position: relative;
+        left: -25px;
+    }
 }
 
 /*EXTRA LARGE Stili per DesktopS */

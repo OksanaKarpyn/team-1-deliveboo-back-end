@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.personal.app')
+@section('Page-name')
+Modifica Piatto - {{ $dish->name }}
+@endsection
 @section('content')
-    <div class="container">
-        <a class="btn btn-success text-white me-3 fs-5 my-5" href="{{ route('user.dish.index') }}">&larr; torna indietro</a>
-
-        <div class="col-5 m-auto">
-            <h1>Modifica piatto </h1>
+    <div class="container mt-2">
+        <a class="my-btn bg-danger text-white my-3 d-inline-block" href="{{ route('user.dish.index') }}">&larr; Lista piatti</a>
             <form action="{{ route('user.dish.update', $dish->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -91,7 +91,7 @@
                     </label>
                 </div>
 
-                <button type="submit" class="btn btn-secondary
+                <button type="submit" class="btn btn-success
                 ">Salva piatto</button>
             </form>
         </div>
