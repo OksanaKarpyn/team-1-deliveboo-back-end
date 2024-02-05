@@ -35,7 +35,7 @@
                     <div class="logo_laravel d-flex justify-content-center align-items-center color-logo">
                         {{-- <img class="logo-mt" src="{{ Vite::asset('img/file-img-png/logo/logo.png') }}" alt="logo"> --}}
                         <img src="./logo.png" alt="logo" style="max-height: 70px;">
-                        <h6>DELIVERY<span class="text-dark">BEE</span></h6>
+                        <h6>DELIVERY<span class="text-aqua">BEE</span></h6>
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
@@ -60,12 +60,22 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link cta me-1" href="{{ route('login') }}">
+                                    <span>{{ __('Login') }}</span>
+                                    <svg width="15px" height="10px" viewBox="0 0 13 10">
+                                        <path d="M1,5 L11,5"></path>
+                                        <polyline points="8 1 12 5 8 9"></polyline>
+                                    </svg>
+                                </a>
                             </li>
                             @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
+                                <a class="nav-link cta" href="{{ route('register') }}">
+                                    <span>{{ __('Register') }}</span>
+                                    <svg width="15px" height="10px" viewBox="0 0 13 10">
+                                        <path d="M1,5 L11,5"></path>
+                                        <polyline points="8 1 12 5 8 9"></polyline>
+                                    </svg>
+                                </a>
                             @endif
                         @else
                             <li class="nav-item dropdown">
