@@ -32,7 +32,7 @@
     --yellow: #FFCF0E;
     --aqua: #28ACEC;
     --aqua2: #B1DAE7;
-
+   
 }
 *{
     margin: 0;
@@ -107,6 +107,7 @@
 .text-aqua{
     color: var(--aqua2);
 }
+
 .cta {
     position: relative;
     margin: auto;
@@ -123,11 +124,21 @@
         left: 0;
         display: block;
         border-radius: 50px;
-        background: #b1dae7;
+        background: var(--aqua2);
         width: 45px;
         height: 45px;
         transition: all 0.3s ease;
     }
+
+    span {
+        position: relative;
+        // font-family: "Ubuntu", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color:var(--aqua);
+      }
+    
 
     svg{
         position: relative;
@@ -142,12 +153,16 @@
         transition: all 0.3s ease;
     }
 
-    :hover:before{
+    &:hover:before{
         width: 100%;
-        background: #b1dae7;
+        background: var(--aqua2);
     }
 
-    :active{
+    &:hover svg {
+        transform: translateX(0);
+    }
+
+    &:active{
         transform: scale(0.95);
     }
   }
