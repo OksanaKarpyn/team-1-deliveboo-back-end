@@ -21,7 +21,7 @@ class OrderSeeder extends Seeder
     public function run(Faker $faker)
     {
         Schema::disableForeignKeyConstraints();
-        Dish::truncate();
+        Order::truncate();
         Schema::enableForeignKeyConstraints();
 
         for($i = 0; $i < 10; $i++){

@@ -8,7 +8,9 @@ use App\Models\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Restaurant\StoreRestaurantRequest;
 use App\Http\Requests\Restaurant\UpdateRestaurantRequest;
+use App\Models\Order;
 use App\Models\Type;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -22,9 +24,25 @@ class RestaurantController extends Controller
      */
     public function index()
     {
-        $restaurant = Restaurant::where('user_id', Auth::user()->id)->with('types','dishes')->first();
-        
-        return view('user.restaurant.index', compact('restaurant'));
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->with('types', 'dishes')->first();
+        $allOrders = [];
+        if (count($restaurant->dishes) > 0) {
+            $orderId = 0;
+            foreach ($restaurant->dishes as $dish) {
+                $id = $dish->id;
+                $orders = Order::whereHas('dish', function ($query) use ($id) {
+                    $query->where('dishes.id', $id);
+                })->with('dish')->get();
+                if(count($orders) > 0){
+                    foreach($orders as $order){
+                        if(!in_array($order,$allOrders)){
+                            $allOrders[] = $order;
+                        }
+                    }
+                }
+            }
+        }
+        return view('user.restaurant.index', compact('restaurant', 'allOrders'));
     }
 
     /**
@@ -94,12 +112,12 @@ class RestaurantController extends Controller
         /* 
         Proteziona della rotta controllando se il ristorante che viene passato é quello dell'utente autenticato
         */
-        if($restaurant->user_id != Auth::user()->id){
+        if ($restaurant->user_id != Auth::user()->id) {
             return to_route('user.restaurant.index');
         }
         $editRestaurant = Restaurant::where('user_id', Auth::user()->id)->with('types')->first();
         $typologies = Type::all();
-        
+
         return view('user.restaurant.edit', compact('editRestaurant', 'typologies'));
     }
 
@@ -120,16 +138,16 @@ class RestaurantController extends Controller
         $updateRestaurant->address = $data['address'];
         $updateRestaurant->description = $data['description'];
         $updateRestaurant->phone = $data['phone'];
-        
-        if(isset($data['photo'])){
-            if($updateRestaurant->photo){
+
+        if (isset($data['photo'])) {
+            if ($updateRestaurant->photo) {
                 Storage::delete($updateRestaurant->photo);
             }
             $updateRestaurant->photo = Storage::put('uploads', $data['photo']);
         }
         $updateRestaurant->save();
 
-        if($data['types']){
+        if ($data['types']) {
             $updateRestaurant->types()->sync($data['types']);
         }
 
