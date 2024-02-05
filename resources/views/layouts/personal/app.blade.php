@@ -28,9 +28,13 @@
 <body>
     <div id="app">
         {{-- Contenitore generale grande tutto il viewport--}}
-        <div class="w-100 vh-100 d-flex">
+        <div class="wh-100 vh-100 d-flex">
+            {{-- Hamburger Icon --}}
+            <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>            
             {{-- SideBar laterale--}}
-            <aside class="bg-aqua d-none d-md-flex flex-column h-100">
+            <aside class="bg-aqua d-none d-md-flex flex-column collapse show" id="navbarSupportedContent">
                 <div class="bg-row"></div>
                 <div class="row row-cols-2 justify-content-center align-items-center mt-2 color-logo">
                     <img src="{{ asset('logo.png') }}" class="img-fluid w-25">
