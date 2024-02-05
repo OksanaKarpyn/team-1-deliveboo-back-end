@@ -115,55 +115,43 @@
     border: none;
     background: none;
     cursor: pointer;
+
+    &:before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        border-radius: 50px;
+        background: #b1dae7;
+        width: 45px;
+        height: 45px;
+        transition: all 0.3s ease;
+    }
+
+    svg{
+        position: relative;
+        top: 0;
+        margin-left: 10px;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: var(--aqua);
+        stroke-width: 2;
+        transform: translateX(-5px);
+        transition: all 0.3s ease;
+    }
+
+    :hover:before{
+        width: 100%;
+        background: #b1dae7;
+    }
+
+    :active{
+        transform: scale(0.95);
+    }
   }
   
-  .cta:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    border-radius: 50px;
-    background: #b1dae7;
-    width: 45px;
-    height: 45px;
-    transition: all 0.3s ease;
-  }
-  
-  .cta span {
-    position: relative;
-    font-family: "Ubuntu", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--aqua);
-  }
-  
-  .cta svg {
-    position: relative;
-    top: 0;
-    margin-left: 10px;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke: var(--aqua);
-    stroke-width: 2;
-    transform: translateX(-5px);
-    transition: all 0.3s ease;
-  }
-  
-  .cta:hover:before {
-    width: 100%;
-    background: #b1dae7;
-  }
-  
-  .cta:hover svg {
-    transform: translateX(0);
-  }
-  
-  .cta:active {
-    transform: scale(0.95);
-  }
 
 
 .bg-guest {
@@ -202,33 +190,6 @@
     SOLUZIONE RESPONSIVE-MEDIA-QUERY MOBILE-FIRST
 ************************************************/
 
-/* EXTRA SMALL Stile per schermi piccoli */
-@media screen and (max-width: 600px) {
-
-    /* COLUMNS */
-}
-
-/* Stile Per tablet */
-@media screen and (max-width: 768px){
-
-    /*  COLUMNS  */
-
-}
-
-/*SMALL Stile Per tablet */
-@media screen and (min-width: 600px){
-    
-    /*  COLUMNS  */
-    
-
-}
-
-/* Stile Per Laptops */
-@media screen and (max-width: 999px){
-  
-}
-
-/*MEDIUM Stile Per Landscapes tablet */
 @media screen and (max-width: 768px){
      
     /*  COLUMNS  */
@@ -241,7 +202,6 @@
 }
 
 
-/*LARGE Stile Per LAPTOPS/DESKTOPS */
 @media screen and (max-width: 992px){
      
     /*  COLUMNS  */
@@ -269,7 +229,6 @@
     }
 }
 
-/*EXTRA LARGE Stili per DesktopS */
 @media screen and (min-width:1200px){
 
     /*  COLUMNS  */
