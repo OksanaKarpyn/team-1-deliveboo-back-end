@@ -185,7 +185,9 @@
     max-width: 300px;
     margin: 0 auto;
 }
-
+#profile:hover{
+    text-decoration: underline 2px lightgray !important;
+}
 /************************************************
     SOLUZIONE RESPONSIVE-MEDIA-QUERY MOBILE-FIRST
 ************************************************/
@@ -223,10 +225,7 @@
         width: 100%;
         padding: 0;
     }
-    .fa-magnifying-glass{
-        position: relative;
-        left: -25px;
-    }
+    
 }
 
 @media screen and (min-width:1200px){
@@ -235,6 +234,10 @@
 
     .width-100 {
         width: 800px;
+    }
+    .fa-magnifying-glass{
+        position: relative;
+        left: -25px;
     }
 }
 

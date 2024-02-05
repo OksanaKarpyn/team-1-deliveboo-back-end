@@ -78,10 +78,10 @@
                 <div class="h-15 bg-yellow px-4 py-2 d-flex align-items-end justify-content-between">
                     <h3 class="text-light">@yield('Page-name')</h3>
                     <div class="text-white d-flex gap-2 justify-content-between align-items-center">
-                        <div>
+                        <a href="{{ route('profile.edit')}}" class="text-decoration-none text-black" id="profile">
                             <p class="mb-0">{{ Auth::user()->name }} {{ Auth::user()->lastname }}</p>
                             <p class="mb-0 text-black-50 fs-s-7">Administrator</p>
-                        </div>
+                        </a>
                         <img src="https://placehold.co/50x50" class="rounded-circle">
                     </div>
                 </div>
