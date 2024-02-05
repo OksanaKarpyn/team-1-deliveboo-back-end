@@ -44,7 +44,8 @@
     GENERAL STYLES & UTILITIES
 *************************************************/
 
-.color-logo {
+.color-logo,
+.color-text {
     color:var(--yellow);
 }
 
@@ -55,9 +56,11 @@
 .bg-aqua {
     background-color: var(--aqua);
 }
+
 .text-yellow{
     color: var(--yellow);
 }
+
 .aside-link{
     color: white;
     &:hover{
@@ -66,7 +69,7 @@
     }
 }
 .logout{
-    color: black;
+    color: var(--yellow);
     &:hover{
         color: red;
         cursor: pointer;
@@ -233,13 +236,6 @@
         display: inline;
     }
 
-    /*  COLUMNS  */
-    .bg-row{
-        background-color: var(--yellow);
-        height: 20px;
-        width: 100%;
-        padding: 0;
-    }
     
 }
 
@@ -253,6 +249,14 @@
     .fa-magnifying-glass{
         position: relative;
         left: -25px;
+    }
+
+    /*  COLUMNS  */
+    .bg-row{
+        background-color: var(--yellow);
+        height: 60px;
+        width: 100%;
+        padding: 0;
     }
 }
 
