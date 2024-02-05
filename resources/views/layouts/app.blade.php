@@ -35,7 +35,7 @@
                     <div class="logo_laravel d-flex justify-content-center align-items-center color-logo">
                         {{-- <img class="logo-mt" src="{{ Vite::asset('img/file-img-png/logo/logo.png') }}" alt="logo"> --}}
                         <img src="./logo.png" alt="logo" style="max-height: 70px;">
-                        <h6>DELIVERYBEE</h6>
+                        <h6>DELIVERY<span class="text-dark">BEE</span></h6>
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
