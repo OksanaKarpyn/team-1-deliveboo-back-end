@@ -169,7 +169,7 @@
                                     <label for="types" class="form-label">Tipologia</label>
                                     <span class="text-danger">*</span>
                                 </div>
-                                <div class="row row-cols-2 row-cols-md-3 gy-1">
+                                <div class="row row-cols-2 row-cols-md-3 gy-1 text-center">
                                     @foreach ($types as $type)
                                         <div class="form-check">
                                             <input class="form-check-input @error('types') is-invalid @enderror"

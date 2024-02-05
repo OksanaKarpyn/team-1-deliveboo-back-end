@@ -7,7 +7,7 @@
         <div class="row h-100">
             <div class="col-8">
                 <div class="h-75 pb-3">
-                    <div class="card h-100 p-3 overflow-hidden">
+                    <div class="card h-100  rounded-5 p-3 overflow-hidden">
                         @if (count($restaurant->dishes) > 0)
                             <div class="row justify-content-between align-items-center mb-3">
                                 <h3 class="col-10">Piatti</h3>
@@ -53,14 +53,14 @@
                     </div>
                 </div>
                 <div class="h-25 ">
-                    <div class="card h-100">
+                    <div class="card h-100 rounded-5">
 
                     </div>
                 </div>
                 
             </div>
             <div class="col-4">
-                <div class="card h-100 d-flex flex-column align-items-center p-3">
+                <div class="card h-100 d-flex flex-column align-items-center p-3 rounded-5">
                     <div class="row justify-content-between align-items-center w-100">
                         <p class="mb-0 fs-4 fw-bold col-9">{{ $restaurant->activity_name }}</p>
                         <a class="col-3 text-center text-decoration-none mb-0 d-block text-dark"><i

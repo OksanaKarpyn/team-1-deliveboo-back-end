@@ -28,13 +28,9 @@
 <body>
     <div id="app">
         {{-- Contenitore generale grande tutto il viewport--}}
-        <div class="wh-100 vh-100 d-flex">
-            {{-- Hamburger Icon --}}
-            <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <i class="fas fa-bars"></i>
-            </button>            
+        <div class="wh-100 vh-100 d-flex">           
             {{-- SideBar laterale--}}
-            <aside class="bg-aqua d-none d-md-flex flex-column collapse show" id="navbarSupportedContent">
+            <aside class="bg-aqua d-none d-md-flex flex-column">
                 <div class="bg-row"></div>
                 <div class="row row-cols-2 justify-content-center align-items-center mt-2 color-logo">
                     <img src="{{ asset('logo.png') }}" class="img-fluid w-25">
@@ -79,7 +75,7 @@
                     </form>
             </aside>
             <main class="col-10 bg-yellow">
-                <div class="h-15 bg-yellow px-4 py-2 d-flex align-items-end justify-content-between">
+                <div class="bg-yellow px-4 py-2 d-flex align-items-center justify-content-between">
                     <h3 class="text-light">@yield('Page-name')</h3>
                     <div class="text-white d-flex gap-2 justify-content-between align-items-center">
                         <a href="{{ route('profile.edit')}}" class="text-decoration-none text-black" id="profile">

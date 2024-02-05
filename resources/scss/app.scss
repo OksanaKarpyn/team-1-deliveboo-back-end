@@ -135,7 +135,6 @@
 
     span {
         position: relative;
-        // font-family: "Ubuntu", sans-serif;
         font-size: 15px;
         font-weight: 700;
         letter-spacing: 0.05em;
@@ -219,14 +218,20 @@
     }
 
     .cta {
+    
+        &:before{content: "";background-color: transparent;}
         
-        position: static;
-
     }
 
     a.nav-link.cta{padding: 0;margin: 0;}
 
-    // .color-text-mq span{color: var(--yellow);}
+    a.nav-link{text-align: end;}
+
+    .color-text-mq{color: var(--aqua);text-align: end;}
+
+    footer div h6{
+        font-size: 10px;
+    }
 
 }
 

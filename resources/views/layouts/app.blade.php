@@ -48,7 +48,7 @@
                 <div class="collapse navbar-collapse show" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
+                        <li class="nav-item active">
                             <a class="nav-link" href="{{ url('/user/restaurant') }}">{{ __('Home') }}</a>
 
                         </li>
@@ -59,7 +59,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link cta me-1" href="{{ route('login') }}">
+                                <a class="nav-link cta me-auto color-text-mq" href="{{ route('login') }}">
                                     <span>{{ __('Login') }}</span>
                                     <svg width="15px" height="10px" viewBox="0 0 13 10">
                                         <path d="M1,5 L11,5"></path>
@@ -68,7 +68,7 @@
                                 </a>
                             </li>
                             @if (Route::has('register'))
-                                <a class="nav-link cta" href="{{ route('register') }}">
+                                <a class="nav-link cta color-text-mq" href="{{ route('register') }}">
                                     <span>{{ __('Register') }}</span>
                                     <svg width="15px" height="10px" viewBox="0 0 13 10">
                                         <path d="M1,5 L11,5"></path>
