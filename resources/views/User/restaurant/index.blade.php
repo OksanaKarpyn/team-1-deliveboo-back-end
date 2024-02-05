@@ -6,7 +6,7 @@
     <section class="p-3 h-100">
         <div class="row h-100">
             <div class="col-8">
-                <div class="h-75 pb-3">
+                <div class="h-50 pb-3">
                     <div class="card h-100 p-3 overflow-hidden">
                         @if (count($restaurant->dishes) > 0)
                             <div class="row justify-content-between align-items-center mb-3">
@@ -52,7 +52,7 @@
 
                     </div>
                 </div>
-                <div class="h-25 ">
+                <div class="h-50 ">
                     <div class="card h-100">
 
                     </div>
