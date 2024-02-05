@@ -1,4 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.personal.app')
+@section('Page-name')
+Edit Profile
+@endsection
 @section('content')
 
 <div class="container">
