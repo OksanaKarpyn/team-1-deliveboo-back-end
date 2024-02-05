@@ -53,11 +53,41 @@
                     </div>
                 </div>
                 <div class="h-50 ">
-                    <div class="card h-100">
+                    <div class="card h-100 p-3 overflow-y-hidden">
+                        @if (count($allOrders) > 0)
+                            <h3>Ordini</h3>
+                            <div class="overflow-y-scroll">
+                                <table class="table align-middle text-center">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">ID</th>
+                                            <th scope="col">Nome</th>
+                                            <th scope="col">Cognome</th>
+                                            <th scope="col">Indirizzo</th>
+                                            <th scope="col">Stato</th>
+                                            <th scope="col">Tot Prezzo</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="table-group-divider">
+                                        @foreach ($allOrders as $index => $order)
+                                            <tr>
+                                                <td>{{ $index + 1 }}</td>
+                                                <td>{{ $order->name }}</td>
+                                                <td>{{ $order->surname }}</td>
+                                                <td>{{ $order->address }}</td>
+                                                <td>{{ $order->status == 1 ? 'Consegnato' : 'In Consegna' }}</td>
+                                                <td>{{ $order->tot_price }}€</td>
+                                            </tr>
+                                        @endforeach
 
+                                    </tbody>
+                                </table>
+                            </div>
+                        @else
+                        @endif
                     </div>
                 </div>
-                
+
             </div>
             <div class="col-4">
                 <div class="card h-100 d-flex flex-column align-items-center p-3">

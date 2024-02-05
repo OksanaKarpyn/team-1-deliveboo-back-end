@@ -25,17 +25,24 @@ class RestaurantController extends Controller
     public function index()
     {
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->with('types', 'dishes')->first();
-        $orders = [];
+        $allOrders = [];
         if (count($restaurant->dishes) > 0) {
+            $orderId = 0;
             foreach ($restaurant->dishes as $dish) {
                 $id = $dish->id;
-                $order = Order::whereHas('dish', function ($query) use ($id) {
+                $orders = Order::whereHas('dish', function ($query) use ($id) {
                     $query->where('dishes.id', $id);
-                })->get();
-                $orders[] = $order;
+                })->with('dish')->get();
+                if(count($orders) > 0){
+                    foreach($orders as $order){
+                        if(!in_array($order,$allOrders)){
+                            $allOrders[] = $order;
+                        }
+                    }
+                }
             }
         }
-        return view('user.restaurant.index', compact('restaurant', 'orders'));
+        return view('user.restaurant.index', compact('restaurant', 'allOrders'));
     }
 
     /**
