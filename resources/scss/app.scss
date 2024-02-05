@@ -32,7 +32,7 @@
     --yellow: #FFCF0E;
     --aqua: #28ACEC;
     --aqua2: #B1DAE7;
-
+   
 }
 *{
     margin: 0;
@@ -44,7 +44,8 @@
     GENERAL STYLES & UTILITIES
 *************************************************/
 
-.color-logo {
+.color-logo,
+.color-text {
     color:var(--yellow);
 }
 
@@ -55,9 +56,11 @@
 .bg-aqua {
     background-color: var(--aqua);
 }
+
 .text-yellow{
     color: var(--yellow);
 }
+
 .aside-link{
     color: white;
     &:hover{
@@ -66,7 +69,7 @@
     }
 }
 .logout{
-    color: black;
+    color: var(--yellow);
     &:hover{
         color: red;
         cursor: pointer;
@@ -107,6 +110,7 @@
 .text-aqua{
     color: var(--aqua2);
 }
+
 .cta {
     position: relative;
     margin: auto;
@@ -115,55 +119,57 @@
     border: none;
     background: none;
     cursor: pointer;
+
+    &:before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: block;
+        border-radius: 50px;
+        background: var(--aqua2);
+        width: 45px;
+        height: 45px;
+        transition: all 0.3s ease;
+    }
+
+    span {
+        position: relative;
+        // font-family: "Ubuntu", sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        color:var(--aqua);
+      }
+    
+
+    svg{
+        position: relative;
+        top: 0;
+        margin-left: 10px;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke: var(--aqua);
+        stroke-width: 2;
+        transform: translateX(-5px);
+        transition: all 0.3s ease;
+    }
+
+    &:hover:before{
+        width: 100%;
+        background: var(--aqua2);
+    }
+
+    &:hover svg {
+        transform: translateX(0);
+    }
+
+    &:active{
+        transform: scale(0.95);
+    }
   }
   
-  .cta:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: block;
-    border-radius: 50px;
-    background: #b1dae7;
-    width: 45px;
-    height: 45px;
-    transition: all 0.3s ease;
-  }
-  
-  .cta span {
-    position: relative;
-    font-family: "Ubuntu", sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    color: var(--aqua);
-  }
-  
-  .cta svg {
-    position: relative;
-    top: 0;
-    margin-left: 10px;
-    fill: none;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    stroke: var(--aqua);
-    stroke-width: 2;
-    transform: translateX(-5px);
-    transition: all 0.3s ease;
-  }
-  
-  .cta:hover:before {
-    width: 100%;
-    background: #b1dae7;
-  }
-  
-  .cta:hover svg {
-    transform: translateX(0);
-  }
-  
-  .cta:active {
-    transform: scale(0.95);
-  }
 
 
 .bg-guest {
@@ -204,33 +210,6 @@
     SOLUZIONE RESPONSIVE-MEDIA-QUERY MOBILE-FIRST
 ************************************************/
 
-/* EXTRA SMALL Stile per schermi piccoli */
-@media screen and (max-width: 600px) {
-
-    /* COLUMNS */
-}
-
-/* Stile Per tablet */
-@media screen and (max-width: 768px){
-
-    /*  COLUMNS  */
-
-}
-
-/*SMALL Stile Per tablet */
-@media screen and (min-width: 600px){
-    
-    /*  COLUMNS  */
-    
-
-}
-
-/* Stile Per Laptops */
-@media screen and (max-width: 999px){
-  
-}
-
-/*MEDIUM Stile Per Landscapes tablet */
 @media screen and (max-width: 768px){
      
     /*  COLUMNS  */
@@ -239,11 +218,19 @@
         margin: 0 30px 20px 30px;
     }
 
+    .cta {
+        
+        position: static;
+
+    }
+
+    a.nav-link.cta{padding: 0;margin: 0;}
+
+    // .color-text-mq span{color: var(--yellow);}
 
 }
 
 
-/*LARGE Stile Per LAPTOPS/DESKTOPS */
 @media screen and (max-width: 992px){
      
     /*  COLUMNS  */
@@ -258,17 +245,9 @@
         display: inline;
     }
 
-    /*  COLUMNS  */
-    .bg-row{
-        background-color: var(--yellow);
-        height: 20px;
-        width: 100%;
-        padding: 0;
-    }
     
 }
 
-/*EXTRA LARGE Stili per DesktopS */
 @media screen and (min-width:1200px){
 
     /*  COLUMNS  */
@@ -279,6 +258,14 @@
     .fa-magnifying-glass{
         position: relative;
         left: -25px;
+    }
+
+    /*  COLUMNS  */
+    .bg-row{
+        background-color: var(--yellow);
+        height: 60px;
+        width: 100%;
+        padding: 0;
     }
 }
 

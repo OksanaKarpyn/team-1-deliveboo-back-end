@@ -28,13 +28,17 @@
 <body>
     <div id="app">
         {{-- Contenitore generale grande tutto il viewport--}}
-        <div class="w-100 vh-100 d-flex">
+        <div class="wh-100 vh-100 d-flex">
+            {{-- Hamburger Icon --}}
+            <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
+            </button>            
             {{-- SideBar laterale--}}
-            <aside class="bg-primary d-none d-md-flex flex-column h-100">
+            <aside class="bg-aqua d-none d-md-flex flex-column collapse show" id="navbarSupportedContent">
                 <div class="bg-row"></div>
-                <div class="row row-cols-2 justify-content-center align-items-center mt-2">
+                <div class="row row-cols-2 justify-content-center align-items-center mt-2 color-logo">
                     <img src="{{ asset('logo.png') }}" class="img-fluid w-25">
-                    <p class="fs-5 fw-bold text-yellow mb-0">DELIVERBEE</p>
+                    <h6>DELIVERY<span class="text-aqua">BEE</span></h6>
                 </div>
                 <div class="my-2 d-flex justify-content-center align-items-center">
                     <input type="text" class="form-control fs-s-6 rounded-3 w-75 px-4 py-3" placeholder="Cerca">
@@ -67,14 +71,14 @@
                     <a class="gap-2 text-decoration-none fs-5 mt-auto mb-3 logout text-center" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                        <i class="fa-solid fa-arrow-right-from-bracket"></i>{{ __('Logout') }}
+                        <i class="fa-solid fa-arrow-right-from-bracket color-text pe-2"></i>{{ __('Logout') }}
                     </a>
 
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                         @csrf
                     </form>
             </aside>
-            <main class="col-10">
+            <main class="col-10 bg-yellow">
                 <div class="h-15 bg-yellow px-4 py-2 d-flex align-items-end justify-content-between">
                     <h3 class="text-light">@yield('Page-name')</h3>
                     <div class="text-white d-flex gap-2 justify-content-between align-items-center">
