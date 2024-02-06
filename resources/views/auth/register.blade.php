@@ -7,7 +7,7 @@
                 @csrf
                 <div class="row justify-content-between align-items-stretch row-cols-1 row-cols-md-2">
                     <div class="debug col">
-                        <div class="card debug bg-white p-2 p-md-4 rounded-5 margin-xy">
+                        <div class="card h-100 debug bg-white p-2 p-md-4 rounded-5 margin-xy">
                             <div class="card-header bg-yellow rounded-5 text-center fs-5 fw-bold mb-4 custom-title">
                                 {{ __('Registrati') }}</div>
                             <h4 class="text-center fs-6">Utente</h4>
