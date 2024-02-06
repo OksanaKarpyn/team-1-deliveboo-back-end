@@ -168,7 +168,10 @@
         transform: scale(0.95);
     }
   }
-  
+
+// form registrazione  
+
+
 
 
 .bg-guest {
@@ -232,15 +235,7 @@
     footer div h6{
         font-size: 10px;
     }
-
-}
-
-
-@media screen and (max-width: 992px){
-     
-    /*  COLUMNS  */
-
-    .none ,
+    
     .none-two {
         display: none;
     }
@@ -250,6 +245,16 @@
         display: inline;
     }
 
+}
+
+
+@media screen and (max-width: 992px){
+     
+    /*  COLUMNS  */
+
+    .none {
+        display: none;
+    }
     
 }
 
@@ -277,3 +282,7 @@
 /*************************************************
     DEBUG
 *************************************************/
+
+.debug {
+    border: 1px solid red;
+}

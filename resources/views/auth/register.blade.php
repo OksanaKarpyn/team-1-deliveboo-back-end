@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container mt-4">
-        <div class="row justify-content-center align-items-center">
-            <form method="POST" action="{{ route('register') }}" class="width-100" id="formRegister">
+        <div class=" debug row justify-content-center align-items-end">
+            <form method="POST" action="{{ route('register') }}" class="width-100 " id="formRegister">
                 @csrf
-                <div class="row justify-content-between align-items-center row-cols-1 row-cols-md-2">
-                    <div class="col">
-                        <div class="card bg-white p-2 p-md-4 rounded-5 margin-xy">
+                <div class="row justify-content-between align-items-stretch row-cols-1 row-cols-md-2">
+                    <div class="debug col">
+                        <div class="card debug bg-white p-2 p-md-4 rounded-5 margin-xy">
                             <div class="card-header bg-yellow rounded-5 text-center fs-5 fw-bold mb-4 custom-title">
                                 {{ __('Registrati') }}</div>
                             <h4 class="text-center fs-6">Utente</h4>
@@ -20,7 +20,7 @@
                                         placeholder="* Nome" oninput=" validateName()">
                                 </div>
                                 {{-- error -message --}}
-                                <div id="name-error" class="text-danger"></div>
+                                <div id="name-error" class="text-danger fs-s-7"></div>
                                 @error('name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -36,7 +36,7 @@
                                         required oninput=" validateLastName()">
                                 </div>
                                 {{-- error -message --}}
-                                <div id="lastname-error" class="text-danger"></div>
+                                <div id="lastname-error" class="text-danger fs-s-7"></div>
                                 @error('lastname')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -52,7 +52,7 @@
                                         placeholder="* Email" oninput="validateEmail()">
                                 </div>
                                 {{-- errore-message --}}
-                                <div id="email-error" class="text-danger"></div>
+                                <div id="email-error" class="text-danger fs-s-7"></div>
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -68,7 +68,7 @@
                                         name="password" required autocomplete="new-password" placeholder="* Password"
                                         oninput="validatePassword()">
                                 </div>
-                                <div id="password-error" class="text-danger"></div>
+                                <div id="password-error" class="text-danger fs-s-7"></div>
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -85,7 +85,7 @@
                                         name="password_confirmation" required autocomplete="new-password"
                                         placeholder="* Conferma Password" oninput="validateConfirmPassword()">
                                 </div>
-                                <div id="password-confirm-error" class="text-danger"></div>
+                                <div id="password-confirm-error" class="text-danger fs-s-7"></div>
                                 @error('password-confirm')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -105,8 +105,8 @@
                     </div>
 
                     {{-- Sezione registrazione Ristorante --}}
-                    <div class="col">
-                        <div class="card bg-white p-2 p-md-4 rounded-5 margin-xy">
+                    <div class="debug col">
+                        <div class="card debug bg-white p-2 p-md-4 rounded-5 margin-xy">
                             <div class="card-header text-center bg-aqua rounded-5 fs-5 fw-bold mb-4 custom-title">
                                 {{ __('Registra Attività') }}</div>
                             <h4 class="text-center fs-6">Ristorante</h4>
@@ -120,7 +120,7 @@
                                         placeholder="* Nome Attività">
                                 </div>
                                 {{-- errore-message --}}
-                                <div id="activity-name-error" class="text-danger"></div>
+                                <div id="activity-name-error" class="text-danger fs-s-7"></div>
                                 @error('activity_name')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -136,7 +136,7 @@
                                         oninput="validateAddress()" placeholder="* Indirizzo">
                                 </div>
                                 {{-- error---message --}}
-                                <div id="address-error" class="text-danger"></div>
+                                <div id="address-error" class="text-danger fs-s-7"></div>
                                 @error('address')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -151,7 +151,7 @@
                                         name="phone" value="{{ old('phone') }}" autocomplete="phone"
                                         placeholder="* Telefono" oninput="validatePhoneNumber()">
                                 </div>
-                                <div id="phone-error" class="text-danger"></div>
+                                <div id="phone-error" class="text-danger fs-s-7"></div>
                                 @error('phone')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -169,7 +169,7 @@
 
                                 </div>
                                 {{-- errore--message --}}
-                                <div id="piva-error" class="text-danger"></div>
+                                <div id="piva-error" class="text-danger fs-s-7"></div>
                                 @error('p_iva')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -186,7 +186,7 @@
                                     <span class="text-danger">*</span>
                                 </div>
                                 {{-- errore---message --}}
-                                <div id="typology-error" class="text-danger"></div>
+                                <div id="typology-error" class="text-danger fs-s-7"></div>
                                 <div class="row row-cols-2 row-cols-md-3 gy-1">
                                     @foreach ($types as $type)
                                         <div class="form-check">
