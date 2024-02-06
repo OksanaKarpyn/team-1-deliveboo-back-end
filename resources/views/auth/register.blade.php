@@ -2,12 +2,12 @@
 
 @section('content')
     <div class="container mt-4">
-        <div class=" debug row justify-content-center align-items-end">
+        <div class="  row justify-content-center align-items-end">
             <form method="POST" action="{{ route('register') }}" class="width-100 " id="formRegister">
                 @csrf
                 <div class="row justify-content-between align-items-stretch row-cols-1 row-cols-md-2">
-                    <div class="debug col">
-                        <div class="card h-100 debug bg-white p-2 p-md-4 rounded-5 margin-xy">
+                    <div class=" col margin-bottom-2">
+                        <div class="card h-100  bg-white p-2 p-md-4 rounded-5 margin-xy">
                             <div class="card-header bg-yellow rounded-5 text-center fs-5 fw-bold mb-4 custom-title">
                                 {{ __('Registrati') }}</div>
                             <h4 class="text-center fs-6">Utente</h4>
@@ -105,8 +105,8 @@
                     </div>
 
                     {{-- Sezione registrazione Ristorante --}}
-                    <div class="debug col">
-                        <div class="card debug bg-white p-2 p-md-4 rounded-5 margin-xy">
+                    <div class=" col">
+                        <div class="card  bg-white p-2 p-md-4 rounded-5 margin-xy">
                             <div class="card-header text-center bg-aqua rounded-5 fs-5 fw-bold mb-4 custom-title">
                                 {{ __('Registra Attività') }}</div>
                             <h4 class="text-center fs-6">Ristorante</h4>
