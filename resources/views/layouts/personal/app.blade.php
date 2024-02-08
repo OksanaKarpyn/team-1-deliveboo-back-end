@@ -49,7 +49,7 @@
 
                     </li>
                     <li class="my-4">
-                        <a href="" class="aside-link text-decoration-none d-flex gap-4 justify-content-start align-items-center">
+                        <a href="{{ route('user.order.index')}}" class="aside-link text-decoration-none d-flex gap-4 justify-content-start align-items-center">
                             <i class="fa-solid fa-folder fs-4"></i>
                             <span class="mb-0 fs-4">Ordini</span>
                         </a>

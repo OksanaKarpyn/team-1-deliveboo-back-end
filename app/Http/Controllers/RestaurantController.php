@@ -27,7 +27,6 @@ class RestaurantController extends Controller
         $restaurant = Restaurant::where('user_id', Auth::user()->id)->with('types', 'dishes')->first();
         $allOrders = [];
         if (count($restaurant->dishes) > 0) {
-            $orderId = 0;
             foreach ($restaurant->dishes as $dish) {
                 $id = $dish->id;
                 $orders = Order::whereHas('dish', function ($query) use ($id) {
