@@ -23,5 +23,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 // chiamate Api x frontend
 Route::get('/api/types', [ApiTypeController::class, 'index']);
-Route::get('/api/restaurants', [ApiRestaurantController::class, 'index']);
+Route::resource('/api/restaurant', ApiRestaurantController::class)->only([
+    'index',
+    'show',
+]);
 Route::get('/api/dishes', [ApiDishController::class, 'index']);
+
+Route::post('/api/types/show', [ApiTypeController::class, 'show']);
