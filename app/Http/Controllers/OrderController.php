@@ -6,6 +6,8 @@ use App\Models\Order;
 use Illuminate\Http\Request;
 use App\Http\Requests\Order\StoreOrderRequest;
 use App\Http\Requests\Order\UpdateOrderRequest;
+use App\Models\Restaurant;
+use Illuminate\Support\Facades\Auth;
 
 class OrderController extends Controller
 {
@@ -16,8 +18,24 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $order= Order::all();
-        return view('user.order.index', compact('orders'));
+        $restaurant = Restaurant::where('user_id', Auth::user()->id)->with('dishes')->first();
+        $allOrders = [];
+        if (count($restaurant->dishes) > 0) {
+            foreach ($restaurant->dishes as $dish) {
+                $id = $dish->id;
+                $orders = Order::whereHas('dish', function ($query) use ($id) {
+                    $query->where('dishes.id', $id);
+                })->with('dish')->get();
+                if(count($orders) > 0){
+                    foreach($orders as $order){
+                        if(!in_array($order,$allOrders)){
+                            $allOrders[] = $order;
+                        }
+                    }
+                }
+            }
+        }
+        return view('user.order.index', compact('allOrders'));
     }
 
     /**
