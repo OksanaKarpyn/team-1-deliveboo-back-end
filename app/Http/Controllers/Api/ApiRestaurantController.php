@@ -26,6 +26,14 @@ class ApiRestaurantController extends Controller
     }
     public function show($id)
     {
-       //
+       $restaurant = Restaurant::with('dishes')->find($id);
+       if(!$restaurant){
+        return response()->json(['error'=>'ristorante non trovato'],404);
+       }
+       $response = [
+        'succces' => true,
+        'result'=> $restaurant
+       ];
+       return response()->json($response,200);
     }
 }
