@@ -84,6 +84,9 @@
                                 </table>
                             </div>
                         @else
+                        <div class="text-danger fs-4 fw-bold">
+                            Nessun Ordine
+                        </div>
                         @endif
                     </div>
                 </div>
